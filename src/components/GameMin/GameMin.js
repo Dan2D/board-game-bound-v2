@@ -14,7 +14,7 @@ function GameMin(props) {
             <div className="info-block--top">
                 <div className="info-block__main">
                     <h5 className="info-block__title">{props.name}</h5>
-                    <span className="info-block__pub-year">{props.yearPub}</span>
+                    <p className="info-block__pub-year">{props.yearPub}</p>
                     <h2 className="info-block__publisher"><strong>Publisher</strong>: {props.publisher}</h2>
                 </div>
                 <Rating rating={props.rating} type="summary" numReviews={props.numReviews} />

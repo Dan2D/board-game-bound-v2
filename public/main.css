@@ -727,6 +727,10 @@ a {
   height: 30px;
 }
 
+.nav__logo {
+  height: 30px;
+}
+
 p, a {
   font-size: 15px;
 }

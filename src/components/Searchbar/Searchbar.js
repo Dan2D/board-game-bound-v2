@@ -10,11 +10,11 @@ function Searchbar(props) {
     function handleSearchSubmit() {
 
     }
-
+// Change button to link later
     return (
         <div>
-            <input type="text" value={input} onChange={handleSearchInput}/>
-            <button onClick={handleSearchSubmit}>Search</button>
+            <input className="searchbar__input" type="text" value={input} onChange={handleSearchInput}/>
+            <button className="searchbar__lnk" onClick={handleSearchSubmit}>Search</button>
         </div>
     )
 }

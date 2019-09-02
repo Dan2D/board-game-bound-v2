@@ -30,5 +30,7 @@ export const NEW_GAME_EXAMPLE = [
 
 export const SUMMARY_GAMES = [];
 
+export const TRENDING_GAMES = "popularity";
+export const TOP_GAMES = "reddit_week_count";
 
 export const url = `https://www.boardgameatlas.com/api/search?order_by=popularity&limit=50&client_id=7pxbmyR661`

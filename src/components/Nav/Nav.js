@@ -6,7 +6,7 @@ function Nav(props) {
     // MAKE PNG IMAGE COMBINES BGB WITH ICON
     return (
         <div className="nav-container">
-            {/* <img src={require("")} alt="board game bound logo" /> */}
+            <img className="nav__logo" src={require("../../Images/site-logo.png")} alt="board game bound logo" />
             <SearchBar />
         </div>
     )
