@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+button {
+    padding: 5px;
+    margin: 5px;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.category-btn {
+    background: $darkBg;
+    width: 145px;
+    transition: all 500ms ease;
+    &:hover {
+        background:$lightBg;
+    }
+}
+
+.search__btn{
+    font-size: 16px;
+    & img {
+        height: 20px;
+    }
+    &--filter{
+        position: absolute;
+        right: 5px;
+        background: rgba(0,0,0,0.6);
+    }
+}
+
+.btn {
+    &--close {
+        position: absolute;
+            right: 0;
+            top: 0;
+    }
+}
