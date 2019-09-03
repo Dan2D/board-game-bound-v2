@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import GameMin from "../GameMin/GameMin";
-
 // Destructure props
 function List(props) {
     if (props.isLoading) {
@@ -17,25 +17,26 @@ function List(props) {
     
     for (let i = listStart; i < listEnd; i++){
         gameArray.push(
-            <GameMin  
-            key={props.games[i].id}
-            id={props.games[i].id}
-            rank={i + 1} 
-            gameCover={props.games[i].images.small} 
-            name={props.games[i].name}
-            yearPub={props.games[i].year_published} 
-            publisher={props.games[i].primary_publisher}
-            rating={props.games[i].average_user_rating} 
-            numReview={props.games[i].num_user_ratings}
-            minPlayers={props.games[i].min_players}
-            maxPlayers={props.games[i].max_players}
-            minTime={props.games[i].min_playtime}
-            maxTime={props.games[i].max_playtime}
-            age={props.games[i].min_age}
-            msrp={props.games[i].msrp}
-            price={props.games[i].price}
-            discount={props.games[i].discount}
-            />
+            <Link key={props.games[i].id} to={`/games?name=${props.games[i].name}&year=${props.games[i].year_published}`}>
+                <GameMin  
+                id={props.games[i].id}
+                rank={i + 1} 
+                gameCover={props.games[i].images.small} 
+                name={props.games[i].name}
+                yearPub={props.games[i].year_published} 
+                publisher={props.games[i].primary_publisher}
+                rating={props.games[i].average_user_rating} 
+                numReview={props.games[i].num_user_ratings}
+                minPlayers={props.games[i].min_players}
+                maxPlayers={props.games[i].max_players}
+                minTime={props.games[i].min_playtime}
+                maxTime={props.games[i].max_playtime}
+                age={props.games[i].min_age}
+                msrp={props.games[i].msrp}
+                price={props.games[i].price}
+                discount={props.games[i].discount}
+                />
+            </Link>
         )
     }
 

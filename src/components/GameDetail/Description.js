@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import parse from 'react-html-parser';
+
+
 
 function Description(props) {
-    setTimeout(() => {document.getElementById("description").innerHTML = props.dscrpt}, 500);
+
     return (
         <div className="description-container">
             <p className="detail-game-block__dscrpt-title"><strong>Description</strong></p>
-            <p className="detail-game-block__dscrpt-body" id="description"></p>
+            <p className="detail-game-block__dscrpt-body" id="description" >{parse(props.dscrpt)}</p>
             <div className="detail-game-block__site-url">
                 {props.url && <>
                     <p><strong>Website:</strong></p>
