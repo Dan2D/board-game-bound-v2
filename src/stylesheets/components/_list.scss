@@ -181,3 +181,11 @@
 
 
 
+.list__pg-btn {
+    font-weight: 300;
+    color: lightgray;
+    &.active {
+        font-weight: 700;
+        color: white;
+    }
+}

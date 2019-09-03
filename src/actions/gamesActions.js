@@ -3,10 +3,10 @@ import * as apiUtil from "../utils/apiUtils";
 import * as apiConst from "../constants/apiConstants";
 import axios from 'axios';
 
-
-
-// dispatch is for async
-
+const QUERY = "query";
+const CATEGORY = "category";
+const TOP = "top";
+const TRENDING = "trending";
 
 export const getNewGames = dispatch => {
     dispatch({type: types.GET_NEW_GAMES});
@@ -23,15 +23,13 @@ export const getNewGames = dispatch => {
             payload: gamesArr
         })
     })
-    .catch(err => dispatch({type: types.GET_LIST_GAMES_FAIL, payload: err.message}));
+    .catch(err => dispatch({type: types.GET_NEW_GAMES_FAIL, payload: err.message}));
 };
 
-
-
-
-export const getListGames = list => dispatch => {
+export const getListGames = (list) => dispatch => {
     dispatch({type: types.GET_LIST_GAMES});
     let name = list === apiConst.TRENDING_GAMES ? "trending" : "top";
+
     return axios.get(`https://www.boardgameatlas.com/api/search?order_by=${list}&limit=50&client_id=7pxbmyR661`)
             .then(response => {
                 let gamesArray =  apiUtil.genArrayFromObj(response.data.games);
@@ -43,7 +41,6 @@ export const getListGames = list => dispatch => {
             })
             .catch(err => dispatch({type: types.GET_LIST_GAMES_FAIL, payload: err.message}))
 };
-
 
 export const getGameDetail = (name, year) => dispatch => {
     dispatch({type: types.SET_DETAIL_GAME})
@@ -64,7 +61,7 @@ export const getDetailBG = (game, id, backupImg, dispatch) => {
         let bg = response.data.images ? backupImg : response.data.images[0].large;
         getDetailPrice(game, id, backupImg, bg, dispatch);
     });
-}
+};
 
 export const getDetailPrice = (game, id, backupImg, bg, dispatch) => {
     axios.get(`https://www.boardgameatlas.com/api/game/prices?game_id=${id}&client_id=7pxbmyR661`)
@@ -86,7 +83,7 @@ export const getDetailPrice = (game, id, backupImg, bg, dispatch) => {
         })
     })
     .catch(err => dispatch({type: types.SET_DETAIL_GAME_FAIL, payload: err.message}))
-}
+};
 
 export const setDetailImg = imgUrl => dispatch => {
     return (
@@ -94,4 +91,37 @@ export const setDetailImg = imgUrl => dispatch => {
             type: types.SET_DETAIL_IMG,
             payload: imgUrl     
         }))
+};
+
+export const getSearchGames = (searchVal = "", type) => dispatch => {
+    dispatch({type: types.GET_SEARCH_GAMES});
+    let url;
+    switch(type){
+        case QUERY:
+            url = `https://www.boardgameatlas.com/api/search?name=${searchVal}&client_id=7pxbmyR661`;
+            break
+        case CATEGORY:
+            url = `https://www.boardgameatlas.com/api/search?categories=${searchVal}&client_id=7pxbmyR661`;
+            break
+        case TOP:
+                url = `https://www.boardgameatlas.com/api/search?order_by=popularity&limit=50&client_id=7pxbmyR661`;
+                break
+        case TRENDING:
+                url =  `https://www.boardgameatlas.com/api/search?order_by=reddit_week_count&limit=50&client_id=7pxbmyR661`;
+                break
+        default:
+            url =  `https://www.boardgameatlas.com/api/search?name=&client_id=7pxbmyR661`
+    }
+    axios.get(url)
+    .then(response => {
+       return dispatch({
+            type: types.GET_SEARCH_GAMES_SUCCESS,
+            payload: response.data.games
+        })
+    })
+    .catch(err => dispatch({type: types.GET_SEARCH_GAMES_FAIL, payload: err.message}))
+};
+
+export const newPage = pg => dispatch => {
+    dispatch({type: types.GET_NEW_PAGE, payload: pg})
 }

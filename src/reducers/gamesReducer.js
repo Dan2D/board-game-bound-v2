@@ -103,6 +103,46 @@ const gamesReducer = (state = initialState, action) => {
                     isLoading: true
                 }
             }
+        case types.GET_SEARCH_GAMES:
+            return {
+                ...state,
+                content: "search",
+                search: {
+                    list: [],
+                    modList: [],
+                    pg: 0,
+                    isLoading: true
+                }
+            }
+        case types.GET_SEARCH_GAMES_SUCCESS:
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    list: action.payload,
+                    modList: action.payload,
+                    isLoading: false
+                }
+            }
+        case types.GET_SEARCH_GAMES_FAIL:
+            return {
+                ...state,
+                search: {
+                    list: [],
+                    modList: [],
+                    pg: 0,
+                    error: action.payload,
+                    isLoading: false
+                }
+            }
+        case types.GET_NEW_PAGE:
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    pg: action.payload
+                }
+            }
         default:
             return state;
     }
