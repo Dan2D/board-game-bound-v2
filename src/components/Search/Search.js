@@ -4,6 +4,7 @@ import queryString from 'query-string';
 import {getSearchGames} from "../../actions/gamesActions";
 import { connect } from 'react-redux'
 
+import Filter from "../Filter/Filter";
 import List from "../List/List";
 
 const mapDispatchToProps = dispatch => {
@@ -43,6 +44,7 @@ function Search(props) {
 
     return (
         <div>
+            <Filter />
             <List listTitle={title} gameType="search" listType="full"/>
         </div>
     )

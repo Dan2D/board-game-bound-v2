@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import Sort from "../Sort/Sort";
 import GameMin from "../GameMin/GameMin";
 import Pagination from "./Pagination";
 
@@ -48,6 +49,7 @@ function List(props) {
     return (
         <div className={`list-${props.listType}-container`}>
             <h2 className={`list-${props.listType}__title`}>{props.listTitle.toUpperCase()}</h2>
+            {props.listType === "full" && <Sort />}
             <ul>
                 {gameArray}
             </ul>

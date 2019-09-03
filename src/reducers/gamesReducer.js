@@ -135,6 +135,37 @@ const gamesReducer = (state = initialState, action) => {
                     isLoading: false
                 }
             }
+        case types.SORT_GAMES:
+                let sortedList = sortFilter(state, action);
+                return {
+                    ...state,
+                    search: {
+                        ...state.search,
+                        modList: sortedList
+                    }
+                }
+        case types.FILTER_GAMES:
+                if (Object.keys(action.payload).length === 0){
+                    return {
+                        ...state,
+                        search: {
+                            ...state.search,
+                            modList: state.search.list,
+                            filter: false
+                        }
+                    }
+                }
+
+                let filteredList = sortFilter(state, action);
+
+                return {
+                    ...state,
+                    search: {
+                        ...state.search,
+                        modList: filteredList,
+                        filter: true
+                    }
+                }
         case types.GET_NEW_PAGE:
             return {
                 ...state,
@@ -149,3 +180,85 @@ const gamesReducer = (state = initialState, action) => {
 }
 
 export default gamesReducer;
+
+const sortFilter = (state= [], action) => {
+    switch(action.type) {
+        case types.SORT_GAMES:
+                let sortedList = [...state.search.modList];
+                if (action.sort !== "none") {
+                    sortedList = sortedList.sort((a,b) => {
+                        if (action.flow === "high"){
+                            if (action.sort === "name") {
+                                return a[action.sort] > b[action.sort] ? 1 : -1;
+                            }
+                            return parseFloat(a[action.sort]) < parseFloat(b[action.sort]) ? 1 : -1;
+                        }
+                        else {
+                            if (action.sort === "name") {
+                                return a[action.sort] < b[action.sort] ? 1 : -1;
+                            }
+                            return parseFloat(a[action.sort]) > parseFloat(b[action.sort]) ? 1 : -1;
+                        }
+                    });
+                }
+                else {sortedList = [...state.search.list]}
+                return sortedList;
+        case types.FILTER_GAMES:
+                let filteredList = state.search.list;
+                if (action.checkVal){
+                    filteredList = !state.search.filter ? state.search.list : state.search.modList;
+                    if (action.payload[0].name.includes("-")){
+                        filteredList = filteredList.filter(game => {
+                            return game[action.payload[0].minName] >= action.payload[0].min && game[action.payload[0].maxName] <= action.payload[0].max;
+                        });
+                    }
+                    else if (action.payload[0].name.includes("+")){
+                        if (action.payload[0].max !== null){
+                            filteredList = filteredList.filter(game => {
+                                return game[action.payload[0].minName] > action.payload[0].min && game[action.payload[0].maxName] >= action.payload[0].max;
+                            });
+                        }
+                        else {
+                            filteredList = filteredList.filter(game => {
+                                return game[action.payload[0].minName] >= action.payload[0].min;
+                            });
+                        }
+                    }
+                    else if (action.payload[0].name.includes("<")){
+                        filteredList = filteredList.filter(game => {
+                            return game[action.payload[0].maxName] <= action.payload[0].max;
+                        });
+                    }
+                }
+                else {
+                    filteredList = state.search.list;
+                    action.payload.forEach(filter => {
+                        if (filter.name.includes("-")){
+                            filteredList = filteredList.filter(game => {
+                                return game[filter.minName] >= filter.min && game[filter.maxName] <= filter.max;
+                            });
+                        }
+                        else if (filter.name.includes("+")){
+                            if (filter.max !== null){
+                            filteredList = filteredList.filter(game => {
+                                return game[filter.minName] > filter.min && game[filter.maxName] >= filter.max;
+                            });
+                            }
+                            else {
+                                filteredList = filteredList.filter(game => {
+                                    return game[filter.minName] >= filter.min;
+                                });
+                            }
+                        }
+                        else if (filter.name.includes("<")){
+                            filteredList = filteredList.filter(game => {
+                                return game[filter.maxName] <= filter.max;
+                            });
+                        }
+                    })
+                }
+            return filteredList;
+        default:
+            return state
+    }
+} 

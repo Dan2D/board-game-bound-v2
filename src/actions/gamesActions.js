@@ -125,6 +125,19 @@ export const getSearchGames = (searchVal = "", type) => dispatch => {
     .catch(err => dispatch({type: types.GET_SEARCH_GAMES_FAIL, payload: err.message}))
 };
 
+export const sortGames = (sort, flow) => dispatch => {
+    dispatch({type: types.SORT_GAMES, sort, flow})
+}
+
+export const filterGames = (filterObj, filterName, checkVal) => dispatch => {
+    dispatch({
+        type: types.FILTER_GAMES,
+        payload: filterObj,
+        filterName,
+        checkVal
+    })
+}
+
 export const newPage = pg => dispatch => {
     dispatch({type: types.GET_NEW_PAGE, payload: pg})
 }
