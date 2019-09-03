@@ -16,15 +16,8 @@ function Searchbar(props) {
         }
     }
 
-    // function handleSearchSubmit(e) {
-    //     e.preventDefault();
-    //     console.log(e.target)
-    //     e.target.click();
-    
-    // }   
-
     return (
-        <div>
+        <div className="searchbar-container">
             <input className="searchbar__input" type="text" value={input} placeholder="Search..." onKeyDown={checkInput} onChange={handleSearchInput}/>
             <Link to={`/search?name=${input}&type=query`} className="searchbar__lnk" >Search</Link>
         </div>

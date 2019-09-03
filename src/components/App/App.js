@@ -1,19 +1,15 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 
 import Nav from "../Nav/Nav";
 import Home from "../Home/Home";
 import GameDetail from "../GameDetail/GameDetail";
 import Search from "../Search/Search";
 
-
-
-
-
-
 function App(props) {
+
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <header className="App-header">
           <Nav />

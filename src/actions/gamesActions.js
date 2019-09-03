@@ -3,6 +3,9 @@ import * as apiUtil from "../utils/apiUtils";
 import * as apiConst from "../constants/apiConstants";
 import axios from 'axios';
 
+
+
+
 const QUERY = "query";
 const CATEGORY = "category";
 const TOP = "top";
@@ -104,10 +107,10 @@ export const getSearchGames = (searchVal = "", type) => dispatch => {
             url = `https://www.boardgameatlas.com/api/search?categories=${searchVal}&client_id=7pxbmyR661`;
             break
         case TOP:
-                url = `https://www.boardgameatlas.com/api/search?order_by=popularity&limit=50&client_id=7pxbmyR661`;
+                url = `https://www.boardgameatlas.com/api/search?order_by=popularity&client_id=7pxbmyR661`;
                 break
         case TRENDING:
-                url =  `https://www.boardgameatlas.com/api/search?order_by=reddit_week_count&limit=50&client_id=7pxbmyR661`;
+                url =  `https://www.boardgameatlas.com/api/search?order_by=reddit_week_count&client_id=7pxbmyR661`;
                 break
         default:
             url =  `https://www.boardgameatlas.com/api/search?name=&client_id=7pxbmyR661`
