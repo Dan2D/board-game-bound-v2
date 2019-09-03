@@ -1,21 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom';
+import {setDetailImg} from "../../actions/gamesActions";
 import PropTypes from 'prop-types'
-import {NEW_GAME_EXAMPLE} from "../../constants/apiConstants";
+
 import {Carousel} from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+const mapDispatchToProps = dispatch => {
+    return {
+        setDetailImg: (imgUrl) => {
+            dispatch(setDetailImg(imgUrl))
+        }
+    }
+}
+
 function Hero(props) {
+    const {setDetailImg} = props;
+
     if (props.isLoading) {
         return <div>LOADING</div>
     }
+
+    function handleSlideClick(e) {
+        let imgUrl = e.target.children[0].src;
+        setDetailImg(imgUrl);
+    }
+
     let slideTitleArr = [];
     // ADD LINK LATER
     let slideArr = props.games.map((slide,index) => {
         slideTitleArr.push(slide.name);
-        return <img className="carousel__image" key={slide.name} src={slide.image} alt={slide.name} />
-    }
-        )
+        return (
+        <Link key={slide.name}  className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
+            <img className="carousel__image" src={slide.image} alt={slide.name} />
+        </Link>
+        )}
+    )
 
     return (
         <div className="carousel-container">
@@ -40,4 +61,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Hero)
+export default connect(mapStateToProps, mapDispatchToProps)(Hero)

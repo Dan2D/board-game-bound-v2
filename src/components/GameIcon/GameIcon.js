@@ -1,10 +1,14 @@
 import React from 'react';
 
 function GameIcon(props) {
-    let min = props.min ? props.min : null;
-    let max = props.max ? props.max : null;
-    let dash = min && max ? "-" : null;
+    let min = props.min ? props.min : "";
+    let max = props.max ? props.max : "";
+    let dash = min && max ? "-" : "";
     let iconRange = min === max ? min : min + dash + max;
+
+    if (min === "" && max === "") {
+        return null;
+    }
 
     return (
         <div className={`icon-set icon-set--${props.type}`}>

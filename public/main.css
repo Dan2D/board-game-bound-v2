@@ -796,6 +796,10 @@ p, a {
   margin: 10px;
 }
 
+.not-found__img {
+  width: 80%;
+}
+
 .loader-container {
   position: fixed;
   display: -webkit-box;

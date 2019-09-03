@@ -1,5 +1,6 @@
 import * as types from "../constants/types";
 
+
 let initialState = {};
 
 const gamesReducer = (state = initialState, action) => {
@@ -7,6 +8,7 @@ const gamesReducer = (state = initialState, action) => {
         case types.GET_NEW_GAMES:
             return {
                 ...state,
+                content: "home",
                 new: {
                     ...state.new,
                     isLoading: true
@@ -21,7 +23,7 @@ const gamesReducer = (state = initialState, action) => {
                         isLoading: false
                     }
                 }
-        case types.GET_LIST_GAMES_FAIL:
+        case types.GET_NEW_GAMES_FAIL:
             return {
                 ...state,
                 new: {
@@ -46,7 +48,7 @@ const gamesReducer = (state = initialState, action) => {
                     ...state.trending,
                     list: action.payload,
                     isLoading: false
-                },
+                }
             }
         case types.GET_LIST_GAMES_FAIL:
             return {
@@ -56,6 +58,49 @@ const gamesReducer = (state = initialState, action) => {
                     list: [],
                     error: action.payload,
                     isLoading: false
+                }
+            }
+        case types.SET_DETAIL_GAME:
+            return {
+                ...state,
+                content: "detail",
+                detail: {
+                    game: {},
+                    bg: null,
+                    cover: null,
+                    error: null,
+                    isLoading: true
+                }
+            }
+        case types.SET_DETAIL_GAME_SUCCESS :
+            return {
+                ...state,
+                detail: {
+                    ...state.detail,
+                    game: action.payload,
+                    bg: action.bg,
+                    purchaseInfo: action.purchaseInfo,
+                    isLoading: false
+                }
+            }
+        case types.SET_DETAIL_GAME_FAIL:
+                return {
+                    ...state,
+                    detail: {
+                        ...state.detail,
+                        game: {},
+                        cover: null,
+                        error: action.payload,
+                        isLoading: false
+                    }
+                }
+        case types.SET_DETAIL_IMG:
+            return {
+                ...state,
+                detail: {
+                    ...state.detail,
+                    cover: action.payload,
+                    isLoading: true
                 }
             }
         default:

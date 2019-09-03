@@ -26,6 +26,9 @@ export const getNewGames = dispatch => {
     .catch(err => dispatch({type: types.GET_LIST_GAMES_FAIL, payload: err.message}));
 };
 
+
+
+
 export const getListGames = list => dispatch => {
     dispatch({type: types.GET_LIST_GAMES});
     let name = list === apiConst.TRENDING_GAMES ? "trending" : "top";
@@ -39,4 +42,56 @@ export const getListGames = list => dispatch => {
                 })
             })
             .catch(err => dispatch({type: types.GET_LIST_GAMES_FAIL, payload: err.message}))
+};
+
+
+export const getGameDetail = (name, year) => dispatch => {
+    dispatch({type: types.SET_DETAIL_GAME})
+    name = apiUtil.modifyName(name);
+    axios.get(`https://www.boardgameatlas.com/api/search?name=${name}&year_published=${year}&limit=1&client_id=7pxbmyR661`)
+    .then (response => {
+        let game = response.data.games[0];
+        let id = game.id;
+        let backupImg = game.images.medium;
+        getDetailBG(game, id, backupImg, dispatch);
+    })
+    .catch(err => dispatch({type: types.SET_DETAIL_GAME_FAIL, payload: err.message}))
+};
+
+export const getDetailBG = (game, id, backupImg, dispatch) => {
+    axios.get(`https://www.boardgameatlas.com/api/game/images?game_id=${id}&include_game=true&limit=1&client_id=7pxbmyR661`)
+    .then(response => {
+        let bg = response.data.images ? backupImg : response.data.images[0].large;
+        getDetailPrice(game, id, backupImg, bg, dispatch);
+    });
+}
+
+export const getDetailPrice = (game, id, backupImg, bg, dispatch) => {
+    axios.get(`https://www.boardgameatlas.com/api/game/prices?game_id=${id}&client_id=7pxbmyR661`)
+    .then(response => {
+        let purchaseInfo = response.data.prices.sort((a,b) => {
+            let aPrice = a.price_text;
+            let bPrice = b.price_text;
+            aPrice = aPrice[0] === "$" ? aPrice.substr(1) : 999.99;
+            bPrice = bPrice[0] === "$" ? bPrice.substr(1) : 999.99;
+            return (parseFloat(aPrice) - parseFloat(bPrice));
+        })
+        .filter(item => item.price_text.toLowerCase() !== "out of stock");
+        dispatch({
+            type: types.SET_DETAIL_GAME_SUCCESS,
+            payload: game,
+            backupImg,
+            bg,
+            purchaseInfo
+        })
+    })
+    .catch(err => dispatch({type: types.SET_DETAIL_GAME_FAIL, payload: err.message}))
+}
+
+export const setDetailImg = imgUrl => dispatch => {
+    return (
+        dispatch({
+            type: types.SET_DETAIL_IMG,
+            payload: imgUrl     
+        }))
 }

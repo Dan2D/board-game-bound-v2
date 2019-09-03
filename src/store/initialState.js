@@ -1,7 +1,9 @@
 export const initialState = {
     games: {
+        content: "",
         detail: {
             game: {},
+            cover: null,
             isLoading: true
         },
         new: {

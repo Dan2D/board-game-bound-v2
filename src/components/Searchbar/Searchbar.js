@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 function Searchbar(props) {
-    const [input, setInput] = useState('Search...')
+    const [input, setInput] = useState("");
 
     function handleSearchInput(e) {
 
@@ -13,7 +13,7 @@ function Searchbar(props) {
 // Change button to link later
     return (
         <div>
-            <input className="searchbar__input" type="text" value={input} onChange={handleSearchInput}/>
+            <input className="searchbar__input" type="text" value={input} placeholder="Search..." onChange={handleSearchInput}/>
             <button className="searchbar__lnk" onClick={handleSearchSubmit}>Search</button>
         </div>
     )
