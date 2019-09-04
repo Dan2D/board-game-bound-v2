@@ -22,7 +22,7 @@ function Categories(props) {
         });
 
     return (
-        <div className="categories-container">
+        <div className="category-container">
             <Accordian  content={CATEGORIES} title="CATEGORIES" class="category" />
             <h4 className="category__title">CATEGORIES</h4>
             <div className="category-container--btns">

@@ -9,7 +9,7 @@ import Search from "../Search/Search";
 function App(props) {
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <div className="App" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.6) 10%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 90%), url("${require("../../Images/pattern-bg.gif")}")`}}>
         <div className="App-bg" >
           <header className="App-header">

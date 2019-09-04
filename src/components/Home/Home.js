@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux'
 import {getListGames, getNewGames} from "../../actions/gamesActions";
 import {getCategories} from "../../actions/categoriesActions";
-import {TRENDING_GAMES, TOP_GAMES} from "../../constants/apiConstants";
+import {TRENDING_GAMES, TOP_GAMES, DEAL_GAMES} from "../../constants/apiConstants";
 
 import Hero from "../Hero/Hero";
 import Categories from "../Categories/Categories";
@@ -30,14 +30,22 @@ function Home(props) {
       getNewGames();
       getListGames(TRENDING_GAMES);
       getListGames(TOP_GAMES);
+      getListGames(DEAL_GAMES);
       getCategories();
     }, [getListGames, getNewGames, getCategories])
     return (
         <div>
             <Hero />
-            <Categories />
-            <List listTitle="Trending Games" gameType="trending" listType="summary" />
-            <List listTitle="Top Games" gameType="top" listType="summary" />
+            <div className="content-container">
+              <div className="flex-container flex-container--side">
+                <Categories />
+                <List listTitle="Hot Deals" gameType="deal" listType="summary" />
+              </div>
+              <div className="flex-container flex-container--main">
+                <List listTitle="Trending Games" gameType="trending" listType="summary" />
+                <List listTitle="Top Games" gameType="top" listType="summary" />
+              </div>
+            </div>
         </div>
     )
 }

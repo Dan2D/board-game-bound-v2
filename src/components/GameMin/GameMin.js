@@ -5,9 +5,13 @@ import GamePrice from "../GamePrice/GamePrice";
 
 function GameMin(props) {
     return (
-        <li className={`list-item list-item--${props.type}`}>
+        <li className={`list-item list-item--${props.type} ${props.gameType === "deal" ? "list-item--deal" : ""}`}>
         <div className={`list-item__game-block list-item--${props.type}__game-block`}>
-        <span className="game-block__rank">#{props.rank}</span>
+        {props.gameType !== "deal" && <span className={`game-block__rank ${props.gameType === "deal" ? "game-block--deal__rank" : ""}`}>#{props.rank}</span>}
+        {props.gameType === "deal" && (<>
+            <span className={`game-block__discount`}>{props.discount.substring(2)}%</span>
+            <GamePrice type="deal" msrp={props.msrp} price={props.price} discount={props.discount} />
+        </>)}
         <img className={`game-block__game-image game-block--${props.type}__game-image`} src={props.gameCover} alt={`${props.name} board game cover`} />
         </div>
         <div className={`list-item__info-block list-item--${props.type}__info-block`}>

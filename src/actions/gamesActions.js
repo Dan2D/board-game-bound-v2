@@ -10,6 +10,7 @@ const QUERY = "query";
 const CATEGORY = "category";
 const TOP = "top";
 const TRENDING = "trending";
+const DEAL = "deal";
 
 export const getNewGames = dispatch => {
     dispatch({type: types.GET_NEW_GAMES});
@@ -30,7 +31,7 @@ export const getNewGames = dispatch => {
 };
 
 export const getListGames = (list) => dispatch => {
-    let name = list === apiConst.TRENDING_GAMES ? "trending" : "top"
+    let name = list === apiConst.TRENDING_GAMES ? "trending" : list === apiConst.TOP_GAMES ? "top" : "deal";
     dispatch({type: types.GET_LIST_GAMES, name});
     
     return axios.get(`https://www.boardgameatlas.com/api/search?order_by=${list}&limit=50&client_id=7pxbmyR661`)
@@ -112,6 +113,9 @@ export const getSearchGames = (searchVal = "", type) => dispatch => {
         case TRENDING:
                 url =  `https://www.boardgameatlas.com/api/search?order_by=reddit_week_count&client_id=7pxbmyR661`;
                 break
+        case DEAL:
+        url =  `https://www.boardgameatlas.com/api/search?order_by=discount&client_id=7pxbmyR661`;
+        break
         default:
             url =  `https://www.boardgameatlas.com/api/search?name=&client_id=7pxbmyR661`
     }

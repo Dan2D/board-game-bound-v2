@@ -2,69 +2,97 @@ p, a {
     font-size: 15px;
 }
 
-.list-summary,
-.list-full {
-    &-container {
-        @include flex(column, flex-start, center);
+.content-container {
+    @include flex(column, center);
+    margin-top: 10px;
+    @include lg-screens {
+        @include flex(row-reverse);
     }
-    &__title {
-        align-self: flex-start;
-        margin-left: 10px;
-    }
-    &__list {
-        margin: 0;
-        padding: 0;
-        width: 90%;
-        min-width: 370px;
-    }
-    &__lnk {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        font-size: 13px;
-        margin-right: 10px;
-        align-self: flex-end;
-        &--title {
-            font-size: 18px;
-            margin-top: 10px;
-            margin-left: 5px;
-            align-self: flex-start;
-            font-style: normal;
+}
+
+.flex-container {
+    @include lg-screens {
+        &--side {
+            width: 33%;
+        }
+        &--main {
+            width: 67%;
         }
     }
     
 }
 
-.list-full {
-    &-container {
-        margin-top: $headerHt;
-    }
-    &__lnk--title {
-        pointer-events: none;
-    }
-    @include md-screens {
+.list {
+    &-summary,
+    &-full {
+        &-container {
+            @include flex(column, flex-start, center);
+        }
         &__title {
-            font-size: 24px;
-            position: fixed;
-            margin-left: 5px;
+            align-self: flex-start;
+            margin-left: 10px;
+        }
+        &__list {
+            margin: 0;
+            padding: 0;
+            width: 90%;
+            min-width: 370px;
+        }
+        &__lnk {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 13px;
+            margin-right: 10px;
+            align-self: flex-end;
+            &--title {
+                font-size: 18px;
+                margin-top: 10px;
+                margin-left: 5px;
+                align-self: flex-start;
+                font-style: normal;
+            }
+        }
+    }
+    &-full {
+        &-container {
+            margin-top: $headerHt;
+        }
+        &__lnk--title {
+            pointer-events: none;
+        }
+        @include md-screens {
+            &__title {
+                font-size: 24px;
+                position: fixed;
+                margin-left: 5px;
+            }
+        }
+    }
+    &-deal-container {
+        display: none;
+        @include lg-screens {
+            @include flex(column, center);
+            & .list-inner-container {
+                align-self: center;
+                width: 200px;
+            }
+        }
+    }
+    &-inner-container {
+        @include flex(row, center);
+        flex-wrap: wrap;
+        margin-top: 0;
+        position: relative;
+        padding-bottom: 15px;
+        @include md-screens {
+            justify-content: center;
+            &--full{
+                margin-left: 160px;
+            }
         }
     }
 }
-
-.list-inner-container {
-    @include flex(row, center);
-    flex-wrap: wrap;
-    margin-top: 0;
-    position: relative;
-    padding-bottom: 15px;
-    @include md-screens {
-        justify-content: center;
-        &--full{
-            margin-left: 160px;
-        }
-    }
-}
-
 
 .detail-game-block {
     &--layout {

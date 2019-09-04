@@ -6,6 +6,10 @@ export const initialState = {
     },
     games: {
         content: "",
+        deal: {
+            list: [],
+            isLoading: true
+        },
         detail: {
             game: {},
             cover: null,

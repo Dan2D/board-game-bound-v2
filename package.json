@@ -2,6 +2,7 @@
   "name": "board-game-bound-v2",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://dan2d.github.io/board-game-bound-v2/",
   "dependencies": {
     "axios": "^0.19.0",
     "query-string": "^6.8.3",

@@ -14,3 +14,4 @@ export const SUMMARY_GAMES = [];
 
 export const TRENDING_GAMES = "popularity";
 export const TOP_GAMES = "reddit_week_count";
+export const DEAL_GAMES = "discount"

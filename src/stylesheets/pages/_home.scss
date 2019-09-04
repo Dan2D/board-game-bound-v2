@@ -5,12 +5,6 @@
     margin-top: $headerHt;
 }
 
-.categories{
-    &-container {
-        margin-left: 10px;
-    }
-}
-
 .category {
     &__title {
         display: none;
@@ -28,6 +22,11 @@
         &-container--btns {
             @include flex(row, center);
             flex-wrap: wrap;
+        }
+    }
+    @include lg-screens {
+        &__title {
+            margin-left: 10px;
         }
     }
 }

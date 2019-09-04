@@ -191,8 +191,11 @@
     }
     &__discount {
         @extend .game-block__text;
-        color: rgb(155, 211, 72);
-        background: rgb(73, 114, 12);
+            color: rgb(155, 211, 72);
+            background: rgb(73, 114, 12);
+            z-index: 2;
+            padding: 0;
+            font-size: 18px;
     }
     &--summary {
         @include md-screens {
@@ -270,7 +273,7 @@
                 margin: 0 0 0 5px;
             }
             &__title {
-                width: auto;
+                width: 170px;
             }
             &__publisher {
                 display: none;
@@ -282,12 +285,36 @@
             }
         }
     }
+    &--full {
+        @include sm-screens {
+            &__title {
+                width: 250px;
+            }
+        }
+        @include md-screens {
+            
+        }
+    }
 
 }
 
-.price-container--summary {
-    @include md-screens {
-        display: none;
+.price-container {
+    &--summary {
+        @include md-screens {
+            display: none;
+        }
+    }
+    &--deal {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 5px;
+        z-index: 2;
+        & p {
+            font-size: 16px;
+            text-align: right;
+        }
     }
 }
 
