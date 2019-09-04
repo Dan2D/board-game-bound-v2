@@ -4,6 +4,7 @@
     min-width: 50px;
     text-align: center;
     margin-right: 10px;
+    
     &::after {
         content: "";
         width: 100%;
@@ -14,7 +15,18 @@
         border-color: inherit;
         border-left:25px solid transparent;
         border-right: 25px solid transparent;
-       
+        @include sm-screens {
+            border-left:37px solid transparent;
+            border-right: 33px solid transparent;
+        }
+    }
+    @include sm-screens {
+        min-width: 70px;
+    }
+    &--summary {
+        @include md-screens {
+            display: none;
+        }
     }
     &--detail {
         position: absolute;
@@ -28,10 +40,27 @@
             border-left:40px solid transparent;
             border-right: 35px solid transparent;
         }
+        @include sm-screens {
+            width: 100px;
+            &::after {
+                border-left:55px solid transparent;
+                border-right: 45px solid transparent;
+            }
+        }
+    }
+    &--total {
+        display: none;
+        @include sm-screens {
+            display: inline;
+        }
     }
     &__reviews {
+        display: none;
         font-size: 10px;
         font-style: italic;
+        @include sm-screens {
+            display: block;
+        }
     }
     &--none {
         opacity: 0.7;

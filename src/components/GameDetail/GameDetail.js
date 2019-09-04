@@ -44,13 +44,13 @@ function GameDetail(props) {
     return (
         <div className="detail-game-block">
             <img className="detail-game-block__bg" style={{backgroundImage: `url("${BG}")`}} src={require("../../Images/bg-overlay.png")} alt="board game cover" />
-            <Rating type="detail" rating={GAME.average_user_rating} />
+            <Rating type="detail" rating={GAME.average_user_rating} numReviews={GAME.num_user_ratings}/>
             <div className="detail-game-block--layout">
                 <div className="detail-game-block__title-container">
                     <h3 className="detail-game-block__title">{GAME.name.toUpperCase()}</h3>
                     <p className="detail-game-block__year">{GAME.year_published}</p>
                 </div>
-                <div>
+                <div className="detail-game-block__game-container">
                     <img className="detail-game-block__cover" src={COVER ? COVER : GAME.image_url} alt={GAME.name} />
                     <div className="detail-game-block__icon-set">
                         <GameIcon min={GAME.min_players} max={GAME.max_players} type="player" />
@@ -58,9 +58,9 @@ function GameDetail(props) {
                         <GameIcon min={GAME.min_age} type="age" />
                     </div>
                 </div>
-                <GamePrice type="detail" msrp={GAME.msrp} price={GAME.price} discount={GAME.discount} buyLnks={BUY_INFO}/>
                 <Description dscrpt={GAME.description} url={GAME.official_url ? GAME.official_url  : GAME.url} rules={GAME.rules_url}/>
                 <MakerBlock designers={GAME.designers} artists={GAME.artists} publisher={GAME.primary_publisher}/>
+                <GamePrice type="detail" msrp={GAME.msrp} price={GAME.price} discount={GAME.discount} buyLnks={BUY_INFO}/>
                 
             </div>
         </div>

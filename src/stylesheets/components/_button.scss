@@ -27,6 +27,9 @@ button {
         position: absolute;
         right: 5px;
         background: rgba(0,0,0,0.6);
+        @include md-screens {
+            display: none;
+        }
     }
 }
 

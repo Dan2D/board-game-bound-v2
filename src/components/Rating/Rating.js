@@ -32,8 +32,8 @@ function Rating(props) {
         <div 
         className={`rating rating--${props.type} ${rating === "" ? "rating--none" : ""}`}  
         style={{background: color, borderColor: color}}>
-            <strong>{rating}</strong>
-            {props.type === "detail" && <span className="rating__reviews">{props.numReviews}</span>}
+            <strong>{rating} <span className="rating--total">/ 5.0</span></strong>
+             <p className="rating__reviews">({props.numReviews} Reviews)</p>
         </div>
     )
 }

@@ -1,6 +1,10 @@
 .detail-game-block {
     position: relative;
     margin-top: $headerHt;
+    z-index: 1;
+    @include md-screens {
+        min-height: 100vh;
+    }
     &__bg {
         position:absolute;
         background: rgb(19, 19, 19);
@@ -8,7 +12,7 @@
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
-        background-size: 200%;
+        background-size: 110%;
     }
     &__title-container {
         position: relative;
@@ -25,13 +29,24 @@
         right: 0;
         font-size: $yearFontSize;
     }
+    &__game-container {
+        @include sm-screens {
+
+        }
+    }
     &__cover {
         width:$detailCoverWidth;
+        @include sm-screens {
+            max-width: $detailCoverWidth--sm;
+        }
     }
     &__icon-set {
         @include flex(row, space-between);
         width:$detailCoverWidth;
         margin-bottom: 10px;
+        @include sm-screens {
+            max-width: $detailCoverWidth--sm;
+        }
         & .icon-set {
             @include flex(column, center, center);
             margin: 2px 5px;
@@ -69,8 +84,21 @@
     }
 }
 
+.maker-container {
+    margin-bottom: 20px;
+    @include sm-screens {
+        max-width: $detailCoverWidth--sm;
+    }
+}
+
 .description-container {
     margin:5px 0;
+    @include md-screens {
+        position: absolute;
+        top: 45px;
+        right: 20px;
+        width: 60%;
+    }
 }
 
 .detail__msrp--strike {

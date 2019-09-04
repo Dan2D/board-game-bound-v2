@@ -24,13 +24,12 @@ html {
 /**
  * Basic styles for links
  */
-a {
+a, a:hover {
   color: $brand-color;
   text-decoration: none;
 
   @include on-event {
     color: $text-color;
-    text-decoration: underline;
   }
 }
 
@@ -53,4 +52,9 @@ button, a {
 
 button {
   border-radius: 5px;
+}
+
+div.App {
+  background-position: top center;
+  background-size: auto;
 }

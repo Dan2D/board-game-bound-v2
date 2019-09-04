@@ -1,6 +1,19 @@
 p, a {
     font-size: 15px;
 }
+
+.list-inner-container {
+    @include flex(row);
+    flex-wrap: wrap;
+    margin: 10px 10%;
+    position: relative;
+    padding-bottom: 15px;
+    @include md-screens {
+        justify-content: center;
+        margin-right: 0px;
+    }
+}
+
 .list-summary,
 .list-full {
     &-container {
@@ -16,6 +29,9 @@ p, a {
         min-width: 370px;
     }
     &__lnk {
+        position: absolute;
+        bottom: 0;
+        right: 0;
         font-size: 13px;
         margin-top: -10px;
         align-self: flex-end;

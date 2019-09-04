@@ -18,7 +18,7 @@ function List(props) {
     const PG = props.listType === "summary" ? 0 : props.games.pg;
     const NUM_LIST_ITEMS = GAMES.length - (PG * 15) >= 15 ? 15 : GAMES.length - (PG * 15);
     const listStart = PG * 15;
-    const listEnd = props.listType === "summary" ? 5 : listStart + NUM_LIST_ITEMS;
+    const listEnd = props.listType === "summary" ? 12 : listStart + NUM_LIST_ITEMS;
 
     for (let i = listStart; i < listEnd; i++){
         gameArray.push(
@@ -26,12 +26,13 @@ function List(props) {
                 <GameMin  
                 id={GAMES[i].id}
                 rank={i + 1} 
+                type={props.listType}
                 gameCover={GAMES[i].images.small} 
                 name={GAMES[i].name}
                 yearPub={GAMES[i].year_published} 
                 publisher={GAMES[i].primary_publisher}
                 rating={GAMES[i].average_user_rating} 
-                numReview={GAMES[i].num_user_ratings}
+                numReviews={GAMES[i].num_user_ratings}
                 minPlayers={GAMES[i].min_players}
                 maxPlayers={GAMES[i].max_players}
                 minTime={GAMES[i].min_playtime}
@@ -50,10 +51,10 @@ function List(props) {
         <div className={`list-${props.listType}-container`}>
             <h2 className={`list-${props.listType}__title`}>{props.listTitle.toUpperCase()}</h2>
             {props.listType === "full" && <Sort />}
-            <ul>
+            <ul className="list-inner-container">
                 {gameArray}
+                {props.listType === "summary" && <Link className={`list-${props.listType}__lnk`} to={`/search?type=${props.gameType}`}>More Games...</Link>}
             </ul>
-            {props.listType === "summary" && <Link className={`list-${props.listType}__lnk`} to={`/search?type=${props.gameType}`}>More Games...</Link>}
             {props.listType === "full" && <Pagination listLength={GAMES.length} />}
         </div>
     )

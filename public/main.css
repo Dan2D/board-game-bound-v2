@@ -474,14 +474,13 @@ html {
 /**
  * Basic styles for links
  */
-a {
+a, a:hover {
   color: white;
   text-decoration: none;
 }
 
-a:hover, a:active, a:focus {
+a:hover, a:active, a:focus, a:hover:hover, a:hover:active, a:hover:focus {
   color: white;
-  text-decoration: underline;
 }
 
 body {
@@ -503,6 +502,11 @@ button, a {
 
 button {
   border-radius: 5px;
+}
+
+div.App {
+  background-position: top center;
+  background-size: auto;
 }
 
 /**
@@ -701,6 +705,36 @@ p, a {
   font-size: 15px;
 }
 
+.list-inner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px 10%;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .list-inner-container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-right: 0px;
+  }
+}
+
 .list-summary-container,
 .list-full-container {
   display: -webkit-box;
@@ -734,6 +768,9 @@ p, a {
 
 .list-summary__lnk,
 .list-full__lnk {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   font-size: 13px;
   margin-top: -10px;
   -ms-flex-item-align: end;
@@ -974,6 +1011,12 @@ button {
   background: rgba(0, 0, 0, 0.6);
 }
 
+@media (min-width: 768px) {
+  .search__btn--filter {
+    display: none;
+  }
+}
+
 .btn--close, .filter-container-modal__btn--close {
   position: absolute;
   right: 0;
@@ -988,6 +1031,13 @@ button {
 
 .carousel {
   position: relative;
+  max-height: 70vw;
+}
+
+@media (min-width: 768px) {
+  .carousel {
+    max-height: 50vw;
+  }
 }
 
 .carousel__tag {
@@ -1008,7 +1058,8 @@ button {
 
 @media (min-width: 481px) {
   .carousel__image {
-    margin-top: 9%;
+    margin-top: 12%;
+    height: 80vw;
   }
 }
 
@@ -1034,8 +1085,8 @@ button {
 
 @media (min-width: 481px) {
   .slide {
-    -webkit-transform: scale(1.3);
-            transform: scale(1.3);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 }
 
@@ -1045,8 +1096,8 @@ button {
 
 @media (min-width: 481px) {
   .slide.selected {
-    -webkit-transform: scale(1.3);
-            transform: scale(1.3);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
     right: 25%;
     -webkit-animation: slide-x 50000ms ease;
             animation: slide-x 50000ms ease;
@@ -1059,23 +1110,23 @@ button {
 
 @-webkit-keyframes slide-x {
   0% {
-    -webkit-transform: translate3d(25%, 0, 0) scale(1.3);
-            transform: translate3d(25%, 0, 0) scale(1.3);
+    -webkit-transform: translate3d(25%, 0, 0) scale(1.5);
+            transform: translate3d(25%, 0, 0) scale(1.5);
   }
   100% {
-    -webkit-transform: translate3(0, 0, 0) scale(1.3);
-            transform: translate3(0, 0, 0) scale(1.3);
+    -webkit-transform: translate3(0, 0, 0) scale(1.5);
+            transform: translate3(0, 0, 0) scale(1.5);
   }
 }
 
 @keyframes slide-x {
   0% {
-    -webkit-transform: translate3d(25%, 0, 0) scale(1.3);
-            transform: translate3d(25%, 0, 0) scale(1.3);
+    -webkit-transform: translate3d(25%, 0, 0) scale(1.5);
+            transform: translate3d(25%, 0, 0) scale(1.5);
   }
   100% {
-    -webkit-transform: translate3(0, 0, 0) scale(1.3);
-            transform: translate3(0, 0, 0) scale(1.3);
+    -webkit-transform: translate3(0, 0, 0) scale(1.5);
+            transform: translate3(0, 0, 0) scale(1.5);
   }
 }
 
@@ -1118,6 +1169,7 @@ button {
   margin-top: 10px;
   padding: 10px;
   background: black;
+  border: 2px solid white;
   border-radius: 10px;
 }
 
@@ -1131,12 +1183,35 @@ button {
 }
 
 .filter-container-modal--hide {
-  -webkit-transform: translateX(150%);
-          transform: translateX(150%);
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
   -webkit-transition: -webkit-transform 700ms ease-in;
   transition: -webkit-transform 700ms ease-in;
   transition: transform 700ms ease-in;
   transition: transform 700ms ease-in, -webkit-transform 700ms ease-in;
+}
+
+@media (min-width: 768px) {
+  .filter-container-modal {
+    position: absolute;
+    top: 85px;
+    left: 0;
+    right: auto;
+    width: 157px;
+    border-radius: 0 5px 5px 0;
+    border: 2px solid white;
+    margin-left: -2px;
+    padding: 2px 5px 5px 0;
+  }
+  .filter-container-modal__btn--close {
+    display: none;
+  }
+  .filter-container-modal--hide, .filter-container-modal--show {
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transition: all 0;
+    transition: all 0;
+  }
 }
 
 .filter-list {
@@ -1162,6 +1237,14 @@ button {
   -ms-flex-item-align: start;
       align-self: flex-start;
   margin-left: 5px;
+}
+
+@media (min-width: 768px) {
+  .sort-container {
+    position: fixed;
+    top: 95px;
+    z-index: 5;
+  }
 }
 
 .sort-container__select {
@@ -1201,10 +1284,24 @@ button {
           align-items: flex-start;
   position: relative;
   height: 115px;
+  width: 100vw;
   background: rgba(0, 0, 0, 0.5);
   margin: 10px 0;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
+}
+
+@media (min-width: 481px) {
+  .list-item {
+    width: 95vw;
+    max-width: 650px;
+  }
+}
+
+@media (min-width: 768px) {
+  .list-item {
+    width: 60vw;
+  }
 }
 
 .list-item:hover {
@@ -1242,6 +1339,43 @@ button {
   position: relative;
 }
 
+@media (min-width: 768px) {
+  .list-item--summary {
+    display: inline-block;
+    max-width: auto;
+    width: auto;
+    height: auto;
+    margin: 20px 10px;
+    border: 2px solid lightslategray;
+  }
+  .list-item--summary__game-block {
+    height: 175px;
+    overflow: hidden;
+  }
+  .list-item--summary__info-block {
+    background: black;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
+  .list-item--summary:hover {
+    background: white;
+    border: 2px solid white;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
+  .list-item--summary:hover .game-block__game-image {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
+  .list-item--summary:hover .list-item__info-block {
+    background: rgba(0, 0, 0, 0.9);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
+}
+
 .game-block__text, .game-block__rank, .game-block__discount {
   cursor: default;
   position: absolute;
@@ -1261,11 +1395,25 @@ button {
 .game-block__rank {
   color: white;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .game-block__discount {
   color: #9bd348;
   background: #49720c;
+}
+
+@media (min-width: 768px) {
+  .game-block--summary {
+    height: 175px;
+    overflow: hidden;
+  }
+  .game-block--summary__game-image {
+    width: 175px;
+    height: 175px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
 }
 
 .icon-set {
@@ -1309,6 +1457,10 @@ button {
           align-items: flex-start;
   margin: 0 5px 5px 5px;
   width: 100%;
+}
+
+.info-block__main {
+  display: inline-block;
 }
 
 .info-block__title {
@@ -1364,6 +1516,37 @@ button {
 .info-block__msrp--strike, .detail__msrp--strike {
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .info-block--summary {
+    background: black;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
+  .info-block--summary--top {
+    display: inline-block;
+    margin: 0 0 0 5px;
+  }
+  .info-block--summary__title {
+    width: auto;
+  }
+  .info-block--summary__publisher {
+    display: none;
+  }
+  .info-block--summary--bottom {
+    position: relative;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .price-container--summary {
+    display: none;
+  }
 }
 
 .list__pg-btn {
@@ -1427,6 +1610,25 @@ button {
   border-right: 25px solid transparent;
 }
 
+@media (min-width: 481px) {
+  .rating::after {
+    border-left: 37px solid transparent;
+    border-right: 33px solid transparent;
+  }
+}
+
+@media (min-width: 481px) {
+  .rating {
+    min-width: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .rating--summary {
+    display: none;
+  }
+}
+
 .rating--detail {
   position: absolute;
   right: 0px;
@@ -1442,9 +1644,36 @@ button {
   border-right: 35px solid transparent;
 }
 
+@media (min-width: 481px) {
+  .rating--detail {
+    width: 100px;
+  }
+  .rating--detail::after {
+    border-left: 55px solid transparent;
+    border-right: 45px solid transparent;
+  }
+}
+
+.rating--total {
+  display: none;
+}
+
+@media (min-width: 481px) {
+  .rating--total {
+    display: inline;
+  }
+}
+
 .rating__reviews {
+  display: none;
   font-size: 10px;
   font-style: italic;
+}
+
+@media (min-width: 481px) {
+  .rating__reviews {
+    display: block;
+  }
 }
 
 .rating--none {
@@ -1485,6 +1714,13 @@ button {
 .detail-game-block {
   position: relative;
   margin-top: 45px;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .detail-game-block {
+    min-height: 100vh;
+  }
 }
 
 .detail-game-block__bg {
@@ -1494,7 +1730,7 @@ button {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: 200%;
+  background-size: 110%;
 }
 
 .detail-game-block__title-container {
@@ -1519,6 +1755,12 @@ button {
   width: 80%;
 }
 
+@media (min-width: 481px) {
+  .detail-game-block__cover {
+    max-width: 250px;
+  }
+}
+
 .detail-game-block__icon-set {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1535,6 +1777,12 @@ button {
           align-items: flex-start;
   width: 80%;
   margin-bottom: 10px;
+}
+
+@media (min-width: 481px) {
+  .detail-game-block__icon-set {
+    max-width: 250px;
+  }
 }
 
 .detail-game-block__icon-set .icon-set {
@@ -1592,8 +1840,27 @@ button {
   font-size: 20px;
 }
 
+.maker-container {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 481px) {
+  .maker-container {
+    max-width: 250px;
+  }
+}
+
 .description-container {
   margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+  .description-container {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    width: 60%;
+  }
 }
 
 .sort-filter-set {

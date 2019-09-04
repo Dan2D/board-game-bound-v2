@@ -56,28 +56,28 @@
 
 ///Media Queries
 //small devices
-@mixin sm {
+@mixin sm-screens {
   @media (min-width: $screen-sm-min){
     @content;
   }
 }
 
 //med devices
-@mixin md {
+@mixin md-screens {
   @media (min-width: $screen-md-min){
     @content;
   }
 }
 
 //large devices
-@mixin lg {
+@mixin lg-screens {
   @media (min-width: $screen-lg-min){
     @content;
   }
 }
 
 //extra-larg devices
-@mixin xl {
+@mixin xl-screens {
   @media (min-width: $screen-xl-min){
     @content;
   }

@@ -6,6 +6,10 @@
 
 .carousel {
     position: relative;
+    max-height: 70vw;
+    @include md-screens {
+        max-height: 50vw;
+    }
     &__tag {
         position: absolute;
         top:0;
@@ -19,8 +23,9 @@
     &__image {
         width:125vw;
         height: 100vw;
-        @include sm {
-            margin-top: 9%;
+        @include sm-screens {
+            margin-top: 12%;
+            height: 80vw;
         }
     }
     &__slide-name {
@@ -38,15 +43,15 @@
 }
 
 .slide {
-    @include sm {
-        transform: scale(1.3);
+    @include sm-screens {
+        transform: scale(1.5);
     }
     opacity: 0;
     transition: opacity 1000ms ease;
     &.selected {
         opacity: 0.8;
-        @include sm {
-            transform: scale(1.3);
+        @include sm-screens {
+            transform: scale(1.5);
             right:25%;
             animation: slide-x 50000ms ease;
         }
@@ -58,10 +63,10 @@
 
 @keyframes slide-x {
     0%{
-        transform: translate3d(25%,0,0) scale(1.3);
+        transform: translate3d(25%,0,0) scale(1.5);
     }
     100%{
-        transform: translate3(0,0,0) scale(1.3);
+        transform: translate3(0,0,0) scale(1.5);
     }
 }
 

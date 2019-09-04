@@ -23,57 +23,30 @@
         margin-top: 10px;
         padding: 10px;
         background: black;
-        border: 2px solid white;
         border-radius: 10px;
         &__btn--close {
-            @extend .btn--close;
+            @extend .btn--close
         }
         &--show {
             transform: translateX(0);
             transition: transform 700ms ease-out;
         }
         &--hide {
-            transform: translateX(200%);
+            transform: translateX(150%);
             transition: transform 700ms ease-in;
         }
-        @include md-screens {
-            position: absolute;
-            top: 85px;
-            left: 0;
-            right: auto;
-            width: 157px;
-            border-radius: 0 5px 5px 0;
-            border: 2px solid white;
-            margin-left: -2px;
-            padding: 2px 5px 5px 0;
-            &__btn--close {
-                display: none;
-            }
-            &--hide,
-            &--show {
-                transform: none;
-                transition: all 0;
-            }
-        }
     }
-
     &-list {
         margin: 0 5px;
         @include flex(row, flex-end);
         flex-wrap: wrap;
         }
-
 }
 
 .sort {
     &-container {
         align-self: flex-start;
         margin-left: 5px;
-        @include md-screens {
-            position: fixed;
-            top: 95px;
-            z-index: 5;
-        }
         &__select {
             background: black;
             font-size: 16px;
@@ -97,11 +70,17 @@
     }
 }
 
+.list-inner-container {
+    @include flex(row);
+    flex-wrap: wrap;
+    margin: 10px 10%;
+}
+// list-item, list-item--summary, list-item--full
+
 .list-item {
     @include flex(row);
     position: relative;
     height: $mobile-game-size;
-    width: 100vw;
     background: $darkBg;
     margin:10px 0;
     transition: all 500ms ease;
@@ -110,12 +89,30 @@
         max-width: 650px;
     }
     @include md-screens {
-        width: 60vw;
+        display: inline-block;
+        max-width: auto;
+        width: auto;
+        height: auto;
+        margin: 20px 10px;
+        border: 2px solid lightslategray;
     }
     &:hover {
         background: $lightBg;
         color: black;
         transition: all 500ms ease;
+        @include md-screens {
+            background: white;
+            border: 2px solid white;
+            transition: all 500ms ease;
+        .game-block__game-image {
+            transform: scale(1.1);
+            transition: all 500ms ease;
+        }
+        .list-item__info-block {
+            background: rgba(0, 0, 0, 0.9);
+            transition: all 500ms ease;
+        }
+        }
     }
     &__lnk {
         display: contents;
@@ -123,42 +120,19 @@
     &__game-block {
        position: relative;
        height: 100%;
+       @include md-screens {
+           height: 175px;
+           overflow: hidden;
+       }  
     }
     &__info-block {
         @include flex(column, space-between);
         height: 100%;
         width: 100%;
         position: relative;
-    }
-    &--summary {
         @include md-screens {
-            display: inline-block;
-            max-width: auto;
-            width: auto;
-            height: auto;
-            margin: 20px 10px;
-            border: 2px solid lightslategray;
-            &__game-block {
-                height: 175px;
-                overflow: hidden;
-            }
-            &__info-block {
-                background: black;
-                transition: all 500ms ease;
-            }
-           &:hover {
-                background: white;
-                border: 2px solid white;
-                transition: all 500ms ease;
-                .game-block__game-image {
-                    transform: scale(1.1);
-                    transition: all 500ms ease;
-                }
-                .list-item__info-block {
-                    background: rgba(0, 0, 0, 0.9);
-                    transition: all 500ms ease;
-                }
-           }
+            background: black;
+            transition: all 500ms ease;
         }
     }
 }
@@ -178,28 +152,22 @@
     &__game-image {
         height: $mobile-game-size;
         width: $mobile-game-size;
+        @include md-screens {
+            width: 175px;
+            height: 175px;
+            transition: all 500ms ease;
+        }
     }
     &__rank {
         @extend .game-block__text;
         color: white;
         background: $darkBg;
-        z-index: 1;
+        z-index: 5;
     }
     &__discount {
         @extend .game-block__text;
         color: rgb(155, 211, 72);
         background: rgb(73, 114, 12);
-    }
-    &--summary {
-        @include md-screens {
-            height: 175px;
-            overflow: hidden;
-            &__game-image {
-                width: 175px;
-                height: 175px;
-                transition: all 500ms ease;
-            }
-        }
     }
 }
 
@@ -219,7 +187,12 @@
         @include flex(row, space-between);
         margin: 0 5px 5px 5px;
         width: 100%;
+        @include md-screens {
+            display: inline-block;
+            margin: 0 0 0 5px;
+        }
     }
+    // MAYBE IMPORTANT
     &__main {
         display: inline-block;
     }
@@ -230,6 +203,9 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        @include md-screens {
+            width: auto;
+        }
     }
     &__pub-year {
         font-size: 10px;
@@ -238,6 +214,9 @@
         font-size: 14px;
         max-width: 100%;
         white-space:  normal;
+        @include md-screens {
+            display: none;
+        }
     }
     &--bottom {
         @include flex(row, space-between, flex-end);
@@ -246,6 +225,11 @@
         bottom: 0;
         padding: 5px 5px;
         font-size: 14px;
+        @include md-screens {
+            position: relative;
+            justify-content: flex-end;
+            padding: 0;
+        }
     }
     &__game-icons {
         display: flex;
@@ -257,35 +241,15 @@
         text-decoration: line-through;
         opacity: 0.5;
     }
-    &--summary {
-        @include md-screens {
-            background: black;
-            transition: all 500ms ease;
-            &--top {
-                display: inline-block;
-                margin: 0 0 0 5px;
-            }
-            &__title {
-                width: auto;
-            }
-            &__publisher {
-                display: none;
-            }
-            &--bottom {
-                position: relative;
-                justify-content: flex-end;
-                padding: 0;
-            }
-        }
-    }
 
 }
 
-.price-container--summary {
+.price-container--list {
     @include md-screens {
         display: none;
     }
 }
+
 
 .list__pg-btn {
     font-weight: 300;

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../stylesheets/components/list-temp.scss"
+    ],
+    "names": [],
+    "file": "list-temp.css"
+}
