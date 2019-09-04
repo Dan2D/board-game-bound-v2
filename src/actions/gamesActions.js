@@ -30,12 +30,12 @@ export const getNewGames = dispatch => {
 };
 
 export const getListGames = (list) => dispatch => {
-    dispatch({type: types.GET_LIST_GAMES});
-    let name = list === apiConst.TRENDING_GAMES ? "trending" : "top";
-
+    let name = list === apiConst.TRENDING_GAMES ? "trending" : "top"
+    dispatch({type: types.GET_LIST_GAMES, name});
+    
     return axios.get(`https://www.boardgameatlas.com/api/search?order_by=${list}&limit=50&client_id=7pxbmyR661`)
             .then(response => {
-                let gamesArray =  apiUtil.genArrayFromObj(response.data.games);
+                let gamesArray =  apiUtil.genArrayFromObj(response.data.games);                
                 dispatch({
                     type: types.GET_LIST_GAMES_SUCCESS,
                     payload: gamesArray,

@@ -10,7 +10,8 @@ button {
 }
 
 .category-btn {
-    background: $darkBg;
+    background: rgba(41, 74, 98, 0.5);
+    margin: 5px;
     width: 145px;
     transition: all 500ms ease;
     &:hover {

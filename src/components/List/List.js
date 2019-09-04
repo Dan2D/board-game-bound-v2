@@ -51,11 +51,12 @@ function List(props) {
         <div className={`list-${props.listType}-container`}>
             <h2 className={`list-${props.listType}__title`}>{props.listTitle.toUpperCase()}</h2>
             {props.listType === "full" && <Sort />}
-            <ul className="list-inner-container">
+            <ul className={`list-inner-container list-inner-container--${props.listType}`}>
                 {gameArray}
                 {props.listType === "summary" && <Link className={`list-${props.listType}__lnk`} to={`/search?type=${props.gameType}`}>More Games...</Link>}
+                {props.listType === "full" && <Pagination listLength={GAMES.length} />}
             </ul>
-            {props.listType === "full" && <Pagination listLength={GAMES.length} />}
+            
         </div>
     )
 }

@@ -1,25 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 
+import PriceLnk from "../GamePrice/PriceLnk";
+import CategoryBtn from "../Categories/CategoryBtn";
 function Accordian(props) {
     const [toggle, setToggle] = useState(false);
-    let priceArr = props.content;
+    const CONTENT = props.content;
 
-    function genBuyLnks(content){
-       return content.map(item => {
-           return( 
-           <div key={item.store_name} className="buy-lnk">
-                <p>{`Store: ${item.store_name}`}</p>
-                <p>{`Price: ${item.price_text}`}</p>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a>
-            </div> 
-            )
-            }
-        )
+    function genItemArr (content, type) {
+        if (type === "price"){
+            return content.map(item => {
+                return <PriceLnk key={item.store_name} store={item.store_name} price={item.price_text} url={item.url} />
+            })
+        }
+        return Object.keys(content).map(item => {
+            return <CategoryBtn key={content[item]} btnText={item} categoryId={content[item]} />
+        })
+        
     }
+
     return (
         <div className={`accordian-container accordian--${toggle ? "open" : "closed"} accordian--${props.class}`}>
             <button className={`accordian`} onClick={() => setToggle(!toggle)}>{props.title}<img src={require("../../Images/arrow-icon.png")} alt="arrow"/></button>
-            {priceArr.length > 0 ? genBuyLnks(priceArr) : <p>No Stock Available...</p>}
+
+            <div className={`accordian-container--${props.class}`}>
+                {genItemArr(CONTENT, props.type)}
+            </div>
         </div>
     )
 }

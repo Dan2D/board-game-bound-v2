@@ -34,10 +34,11 @@ const gamesReducer = (state = initialState, action) => {
                 }
             }
         case types.GET_LIST_GAMES:
+            console.log(action.name)
             return {
                 ...state,
                 [action.name]: {
-                    ...state.trending,
+                    ...state[action.name],
                     isLoading: true
                 },
             }
@@ -45,7 +46,7 @@ const gamesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 [action.name]: {
-                    ...state.trending,
+                    ...state[action.name],
                     list: action.payload,
                     isLoading: false
                 }
@@ -54,7 +55,7 @@ const gamesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 [action.name]: {
-                    ...state.trending,
+                    ...state[action.name],
                     list: [],
                     error: action.payload,
                     isLoading: false

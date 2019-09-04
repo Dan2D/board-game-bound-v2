@@ -37,6 +37,7 @@
     &__cover {
         width:$detailCoverWidth;
         @include sm-screens {
+            margin-top: 10px;
             max-width: $detailCoverWidth--sm;
         }
     }

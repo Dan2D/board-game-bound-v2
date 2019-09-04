@@ -27,7 +27,7 @@ function Pagination(props) {
    }
 
     return (
-        <div>
+        <div className="pagination-container">
             {pgArr}
         </div>
     )

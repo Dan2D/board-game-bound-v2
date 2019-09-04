@@ -2,6 +2,10 @@
     margin-top: $headerHt;
     position: relative;
     display: inline-block;
+    @include lg-screens {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .carousel {
@@ -9,6 +13,10 @@
     max-height: 70vw;
     @include md-screens {
         max-height: 50vw;
+    }
+    @include lg-screens {
+        max-height: 500px;
+        max-width: 800px;
     }
     &__tag {
         position: absolute;

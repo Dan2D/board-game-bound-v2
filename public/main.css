@@ -507,12 +507,13 @@ button {
 div.App {
   background-position: top center;
   background-size: auto;
+  min-height: 100vh;
 }
 
 /**
  * Basic typography style for copy text
  */
-body, select, .sort-container__option {
+body, select, .sort-container__option, button {
   color: white;
   font: normal 125%/1.4 "Roboto", sans-serif, "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
@@ -639,7 +640,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0;
+  margin: 0 10px;
 }
 
 .searchbar__icon {
@@ -705,36 +706,6 @@ p, a {
   font-size: 15px;
 }
 
-.list-inner-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 10px 10%;
-  position: relative;
-  padding-bottom: 15px;
-}
-
-@media (min-width: 768px) {
-  .list-inner-container {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    margin-right: 0px;
-  }
-}
-
 .list-summary-container,
 .list-full-container {
   display: -webkit-box;
@@ -756,6 +727,7 @@ p, a {
 .list-full__title {
   -ms-flex-item-align: start;
       align-self: flex-start;
+  margin-left: 10px;
 }
 
 .list-summary__list,
@@ -772,7 +744,7 @@ p, a {
   bottom: 0;
   right: 0;
   font-size: 13px;
-  margin-top: -10px;
+  margin-right: 10px;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -793,6 +765,46 @@ p, a {
 
 .list-full__lnk--title {
   pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .list-full__title {
+    font-size: 24px;
+    position: fixed;
+    margin-left: 5px;
+  }
+}
+
+.list-inner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 0;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .list-inner-container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .list-inner-container--full {
+    margin-left: 160px;
+  }
 }
 
 .detail-game-block--layout {
@@ -922,16 +934,39 @@ p, a {
   width: 100%;
 }
 
+.accordian-container--category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .accordian img {
   height: 10px;
   margin: 0 0 2px 5px;
 }
 
+.accordian--category img {
+  height: 5px;
+  margin-bottom: 3px;
+}
+
 .accordian--closed {
   max-height: 35px;
   overflow: hidden;
-  -webkit-transition: max-height 1200ms ease;
-  transition: max-height 1200ms ease;
+  -webkit-transition: max-height 2000ms ease;
+  transition: max-height 2000ms ease;
 }
 
 .accordian--closed .accordian img {
@@ -943,7 +978,8 @@ p, a {
   transition: transform 500ms ease 1000ms, -webkit-transform 500ms ease 1000ms;
 }
 
-.accordian--closed .buy-lnk {
+.accordian--closed .buy-lnk,
+.accordian--closed .category-btn {
   pointer-events: none;
   opacity: 0;
   -webkit-transition: opacity 500ms ease 1200ms;
@@ -951,9 +987,9 @@ p, a {
 }
 
 .accordian--open {
-  max-height: 1000px;
-  -webkit-transition: max-height 1200ms ease;
-  transition: max-height 1200ms ease;
+  max-height: 900px;
+  -webkit-transition: max-height 2000ms ease;
+  transition: max-height 2000ms ease;
 }
 
 .accordian--open .accordian img {
@@ -965,11 +1001,22 @@ p, a {
   transition: transform 500ms ease, -webkit-transform 500ms ease;
 }
 
-.accordian--open .buy-lnk {
+.accordian--open .buy-lnk,
+.accordian--open .category-btn {
   pointer-events: visible;
   opacity: 1;
   -webkit-transition: opacity 500ms ease 500ms;
   transition: opacity 500ms ease 500ms;
+}
+
+.accordian--category button {
+  font-size: 16px;
+}
+
+@media (min-width: 481px) {
+  .accordian--category {
+    display: none;
+  }
 }
 
 .buy-lnk {
@@ -987,7 +1034,8 @@ button {
 }
 
 .category-btn {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(41, 74, 98, 0.5);
+  margin: 5px;
   width: 145px;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1029,6 +1077,17 @@ button {
   display: inline-block;
 }
 
+@media (min-width: 992px) {
+  .carousel-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .carousel {
   position: relative;
   max-height: 70vw;
@@ -1037,6 +1096,13 @@ button {
 @media (min-width: 768px) {
   .carousel {
     max-height: 50vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel {
+    max-height: 500px;
+    max-width: 800px;
   }
 }
 
@@ -1169,7 +1235,7 @@ button {
   margin-top: 10px;
   padding: 10px;
   background: black;
-  border: 2px solid white;
+  border: 2px solid dimgray;
   border-radius: 10px;
 }
 
@@ -1199,9 +1265,9 @@ button {
     right: auto;
     width: 157px;
     border-radius: 0 5px 5px 0;
-    border: 2px solid white;
     margin-left: -2px;
     padding: 2px 5px 5px 0;
+    background: rgba(0, 0, 0, 0.404);
   }
   .filter-container-modal__btn--close {
     display: none;
@@ -1236,7 +1302,7 @@ button {
 .sort-container {
   -ms-flex-item-align: start;
       align-self: flex-start;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 @media (min-width: 768px) {
@@ -1300,11 +1366,13 @@ button {
 
 @media (min-width: 768px) {
   .list-item {
+    opacity: 0.8;
     width: 60vw;
   }
 }
 
 .list-item:hover {
+  opacity: 1;
   background: #69aece;
   color: black;
   -webkit-transition: all 500ms ease;
@@ -1396,6 +1464,8 @@ button {
   color: white;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  margin: -3px;
+  padding: 2px 4px;
 }
 
 .game-block__discount {
@@ -1549,6 +1619,23 @@ button {
   }
 }
 
+.pagination-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .list__pg-btn {
   font-weight: 300;
   color: lightgray;
@@ -1688,27 +1775,43 @@ button {
   margin-top: 45px;
 }
 
-.category-container--btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+.categories-container {
+  margin-left: 10px;
 }
 
 .category__title {
-  font-size: 16px;
-  margin-left: 5px;
+  display: none;
+}
+
+.category-container {
+  margin-left: 10px;
+}
+
+.category-container--btns {
+  display: none;
+}
+
+@media (min-width: 481px) {
+  .category__title {
+    display: inline-block;
+  }
+  .category-container--btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 .detail-game-block {
@@ -1757,6 +1860,7 @@ button {
 
 @media (min-width: 481px) {
   .detail-game-block__cover {
+    margin-top: 10px;
     max-width: 250px;
   }
 }

@@ -7,36 +7,54 @@
     overflow: hidden;
     &-container {
         width: 100%;
+        &--category {
+            @include flex(row, space-evenly);
+            flex-wrap: wrap;
+        }
     }
     & img {
         height: 10px;
         margin: 0 0 2px 5px;
     }
+    &--category img {
+        height: 5px;
+        margin-bottom: 3px;
+    }
     &--closed {
         max-height: 35px;
         overflow: hidden;
-          transition: max-height 1200ms ease;
+          transition: max-height 2000ms ease;
           & .accordian img {
               transform: rotate(-90deg);
               transition: transform 500ms ease 1000ms;
           }
-          & .buy-lnk {
+          & .buy-lnk,
+          & .category-btn {
             pointer-events: none;
             opacity: 0;
             transition: opacity 500ms ease 1200ms;
         }
     }
     &--open {
-        max-height: 1000px;
-        transition: max-height 1200ms ease;
+        max-height: 900px;
+        transition: max-height 2000ms ease;
         & .accordian img {
             transform: rotate(0deg);
             transition: transform 500ms ease;
         }
-        & .buy-lnk {
+        & .buy-lnk,
+        & .category-btn {
             pointer-events: visible;
             opacity: 1;
             transition: opacity 500ms ease 500ms;
+        }
+    }
+    &--category {
+        & button {
+        font-size: 16px;
+        }
+        @include sm-screens {
+            display: none;
         }
     }
 }

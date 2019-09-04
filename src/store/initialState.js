@@ -1,4 +1,9 @@
 export const initialState = {
+    categories: {
+        list: [],
+        error: null,
+        isLoading: true
+    },
     games: {
         content: "",
         detail: {

@@ -2,18 +2,6 @@ p, a {
     font-size: 15px;
 }
 
-.list-inner-container {
-    @include flex(row);
-    flex-wrap: wrap;
-    margin: 10px 10%;
-    position: relative;
-    padding-bottom: 15px;
-    @include md-screens {
-        justify-content: center;
-        margin-right: 0px;
-    }
-}
-
 .list-summary,
 .list-full {
     &-container {
@@ -21,6 +9,7 @@ p, a {
     }
     &__title {
         align-self: flex-start;
+        margin-left: 10px;
     }
     &__list {
         margin: 0;
@@ -33,7 +22,7 @@ p, a {
         bottom: 0;
         right: 0;
         font-size: 13px;
-        margin-top: -10px;
+        margin-right: 10px;
         align-self: flex-end;
         &--title {
             font-size: 18px;
@@ -52,6 +41,27 @@ p, a {
     }
     &__lnk--title {
         pointer-events: none;
+    }
+    @include md-screens {
+        &__title {
+            font-size: 24px;
+            position: fixed;
+            margin-left: 5px;
+        }
+    }
+}
+
+.list-inner-container {
+    @include flex(row, center);
+    flex-wrap: wrap;
+    margin-top: 0;
+    position: relative;
+    padding-bottom: 15px;
+    @include md-screens {
+        justify-content: center;
+        &--full{
+            margin-left: 160px;
+        }
     }
 }
 

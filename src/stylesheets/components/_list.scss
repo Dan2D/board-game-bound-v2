@@ -23,7 +23,7 @@
         margin-top: 10px;
         padding: 10px;
         background: black;
-        border: 2px solid white;
+        border: 2px solid rgb(105, 105, 105);
         border-radius: 10px;
         &__btn--close {
             @extend .btn--close;
@@ -43,9 +43,9 @@
             right: auto;
             width: 157px;
             border-radius: 0 5px 5px 0;
-            border: 2px solid white;
             margin-left: -2px;
             padding: 2px 5px 5px 0;
+            background: rgba(0, 0, 0, 0.404);
             &__btn--close {
                 display: none;
             }
@@ -68,7 +68,7 @@
 .sort {
     &-container {
         align-self: flex-start;
-        margin-left: 5px;
+        margin-left: 10px;
         @include md-screens {
             position: fixed;
             top: 95px;
@@ -110,9 +110,11 @@
         max-width: 650px;
     }
     @include md-screens {
+        opacity: 0.8;
         width: 60vw;
     }
     &:hover {
+        opacity: 1;
         background: $lightBg;
         color: black;
         transition: all 500ms ease;
@@ -184,6 +186,8 @@
         color: white;
         background: $darkBg;
         z-index: 1;
+        margin: -3px;
+        padding: 2px 4px;
     }
     &__discount {
         @extend .game-block__text;
@@ -285,6 +289,11 @@
     @include md-screens {
         display: none;
     }
+}
+
+.pagination-container {
+    width: 100%;
+    @include flex(row, center);
 }
 
 .list__pg-btn {

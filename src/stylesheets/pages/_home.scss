@@ -5,13 +5,29 @@
     margin-top: $headerHt;
 }
 
-.category{
-    &-container--btns {
-        @include flex(row, space-evenly);
-        flex-wrap: wrap;
+.categories{
+    &-container {
+        margin-left: 10px;
     }
+}
+
+.category {
     &__title {
-        font-size: $minTitleFontSize;
-        margin-left: 5px;
+        display: none;
+    }
+    &-container {
+        margin-left: 10px;
+        &--btns {
+            display: none;
+        }
+    }
+    @include sm-screens {
+        &__title {
+            display: inline-block;
+        }
+        &-container--btns {
+            @include flex(row, center);
+            flex-wrap: wrap;
+        }
     }
 }

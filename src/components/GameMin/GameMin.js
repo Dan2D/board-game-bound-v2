@@ -7,7 +7,7 @@ function GameMin(props) {
     return (
         <li className={`list-item list-item--${props.type}`}>
         <div className={`list-item__game-block list-item--${props.type}__game-block`}>
-        <span className="game-block__rank">{props.rank}</span>
+        <span className="game-block__rank">#{props.rank}</span>
         <img className={`game-block__game-image game-block--${props.type}__game-image`} src={props.gameCover} alt={`${props.name} board game cover`} />
         </div>
         <div className={`list-item__info-block list-item--${props.type}__info-block`}>
