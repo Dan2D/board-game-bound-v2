@@ -147,6 +147,7 @@
             &__info-block {
                 background: black;
                 transition: all 500ms ease;
+                min-height: 58px;
             }
            &:hover {
                 background: white;
@@ -215,6 +216,9 @@
     margin-right: 10px;
     & img {
         height: 20px;
+    }
+    &--none {
+        opacity: 0.4;
     }
     & span {
         margin-left: 5px;

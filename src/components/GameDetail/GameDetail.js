@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => {
 
 
 function GameDetail(props) {
+    console.log(props)
     const {getGameDetail} = props;
     const GAME = props.detail.game;
     const ERROR = props.detail.error;

@@ -1491,6 +1491,7 @@ button {
     background: black;
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
+    min-height: 58px;
   }
   .list-item--summary:hover {
     background: white;
@@ -1575,6 +1576,10 @@ button {
 
 .icon-set img {
   height: 20px;
+}
+
+.icon-set--none {
+  opacity: 0.4;
 }
 
 .icon-set span {

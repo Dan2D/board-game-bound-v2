@@ -12,6 +12,6 @@ export const BGA_SEARCH_URL = `${BGA_API_BASE}search?name=`;
 
 export const SUMMARY_GAMES = [];
 
-export const TRENDING_GAMES = "popularity";
-export const TOP_GAMES = "reddit_week_count";
+export const TRENDING_GAMES = "reddit_week_count";
+export const TOP_GAMES = "popularity";
 export const DEAL_GAMES = "discount"

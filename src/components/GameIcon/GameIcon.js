@@ -6,13 +6,13 @@ function GameIcon(props) {
     let dash = min && max ? "-" : "";
     let iconRange = min === max ? min : min + dash + max;
 
-    if (min === "" && max === "") {
-        return null;
-    }
+    // if (min === "" && max === "") {
+    //     iconImg.current.classList.add("icon-set--none")
+    // }
 
     return (
         <div className={`icon-set icon-set--${props.type}`}>
-            <img src={require(`../../Images/${props.type}-icon.png`)} alt={`${props.type} icon`} />
+            <img className={min === "" && min === max ? "icon-set--none" : ""} src={require(`../../Images/${props.type}-icon.png`)} alt={`${props.type} icon`}/>
             <span>{(props.type === "age" ? "+" : "") + iconRange}</span>
         </div>
     )

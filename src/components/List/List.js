@@ -57,14 +57,13 @@ function List(props) {
                 {props.listType === "summary" && <Link className={`list-${props.listType}__lnk`} to={`/search?type=${props.gameType}`}>More Games...</Link>}
                 {props.listType === "full" && <Pagination listLength={GAMES.length} />}
             </ul>
-            
         </div>
     )
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        games: state.games[ownProps.gameType],
+        games: state.games[ownProps.gameType]
     }
 }
 

@@ -36,7 +36,7 @@ export const getListGames = (list) => dispatch => {
     
     return axios.get(`https://www.boardgameatlas.com/api/search?order_by=${list}&limit=50&client_id=7pxbmyR661`)
             .then(response => {
-                let gamesArray =  apiUtil.genArrayFromObj(response.data.games);                
+                let gamesArray =  apiUtil.genArrayFromObj(response.data.games);               
                 dispatch({
                     type: types.GET_LIST_GAMES_SUCCESS,
                     payload: gamesArray,

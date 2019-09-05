@@ -20,11 +20,15 @@ function Search(props) {
     let searchParams = queryString.parse(props.location.search);
     useEffect(() => {
         let searchParams = queryString.parse(props.location.search);
-        getSearchGames(searchParams.name, searchParams.type);
-    }, [getSearchGames, props.location])
+        let searchVal = searchParams.name;
+        if (searchParams.type === "category") {
+            searchVal = props.categories[searchParams.name];
+        }
+        getSearchGames(searchVal, searchParams.type);
+    }, [getSearchGames, props.location, props.categories])
 
     let title;
-
+ 
     switch(searchParams.type){
         case "category":
                 title = `Category: ${searchParams.name}`;
@@ -52,7 +56,8 @@ function Search(props) {
 
 const mapStateToProps = state => {
     return {
-        search: state.games.search
+        search: state.games.search,
+        categories: state.categories.list
     }
 }
 
