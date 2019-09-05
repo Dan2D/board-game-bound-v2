@@ -50,7 +50,7 @@ function List(props) {
 
     return (
         <div className={`list-${props.listType}-container ${props.gameType === "deal" ? "list-deal-container" : ""}`}>
-            <h2 id={`list-${props.listType}__title`} className={`list-${props.listType}__title fixed`}>{props.listTitle.toUpperCase()}</h2>
+            {props.listType === "summary" && <h2 className={`list-${props.listType}__title`}>{props.listTitle.toUpperCase()}</h2>}
             {props.listType === "full" && <Sort />}
             <ul className={`list-inner-container list-inner-container--${props.listType}`}>
                 {gameArray}

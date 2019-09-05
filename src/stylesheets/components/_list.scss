@@ -3,14 +3,9 @@
         align-self: flex-start;
         margin-left: 10px;
         @include md-screens {
-            position: absolute;
-            top: auto;
-            bottom: 646px;
-            &.fixed {
                 position: fixed;
-                top: 95px;
-                z-index: 5;
-            }
+                top: 115px;
+                z-index: 4;
         }
         &__select {
             background: black;

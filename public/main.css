@@ -603,7 +603,7 @@ a {
           align-items: center;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 5;
   width: 100vw;
   padding: 10px 10px 10px 5px;
   height: 45px;
@@ -796,15 +796,6 @@ p, a {
   -ms-flex-item-align: start;
       align-self: flex-start;
   font-style: normal;
-}
-
-.list-full-container {
-  margin-top: 45px;
-}
-
-.list-full__title.relative {
-  position: absolute;
-  bottom: 693px;
 }
 
 .list-full__lnk--title {
@@ -1422,14 +1413,9 @@ button {
 
 @media (min-width: 768px) {
   .sort-container {
-    position: absolute;
-    top: auto;
-    bottom: 646px;
-  }
-  .sort-container.fixed {
     position: fixed;
-    top: 95px;
-    z-index: 5;
+    top: 115px;
+    z-index: 4;
   }
 }
 
@@ -2119,6 +2105,7 @@ button {
 
 .search-container {
   position: relative;
+  margin-top: 45px;
   min-height: 100vh;
 }
 
@@ -2154,26 +2141,14 @@ button {
 }
 
 .filter-container {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.filter-container {
   height: 0;
   width: 100%;
   position: static;
   z-index: 1;
-}
-
-.filter-container.fixed {
   position: fixed;
-}
-
-.filter-container.fixed .filter-container-modal {
-  position: relative;
-  top: 85px;
-  left: 0;
-  right: auto;
+  top: 60px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .filter-container-modal {
@@ -2193,6 +2168,7 @@ button {
   -ms-flex-flow: wrap;
       flex-flow: wrap;
   width: 285px;
+  top: 85px;
   left: 0;
   right: 0;
   margin: auto;
@@ -2223,8 +2199,8 @@ button {
 
 @media (min-width: 768px) {
   .filter-container-modal {
-    position: absolute;
-    top: auto;
+    position: relative;
+    top: 85px;
     left: 0;
     right: auto;
     bottom: 95px;

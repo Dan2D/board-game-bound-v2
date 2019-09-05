@@ -23,7 +23,7 @@ function Sort(props) {
     }
     
     return (
-        <div className="sort-container fixed" id="sort-container">
+        <div className="sort-container" id="sort-container">
            <select className="sort-container__select" onChange={handleSort} style={{backgroundImage: `url(${sortIcon})` }}>
                <option className="sort-container__option" value="Relavence" data-value="Relavence" sort="none" flow="none" onClick={(e) => handleSort(e)}>Relavence</option>
                <option className="sort-container__option" value="Latest" data-value="Latest" sort="year_published" flow="high" >Latest</option>

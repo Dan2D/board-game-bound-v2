@@ -17,7 +17,14 @@ const mapDispatchToProps = dispatch => {
 
 function Search(props) {
     const {getSearchGames} = props;
+    const FILTER_FIXED_OFFSET = 60;
+    const FILTER_ABS_OFFSET = 15;
+    const SORT_FIXED_OFFSET = 115;
+    const SORT_ABS_OFFSET = 70;
+    const TITLE_FIXED_OFFSET = 45;
+    const TITLE_ABS_OFFSET = 0;
     let searchParams = queryString.parse(props.location.search);
+
     useEffect(() => {
         window.scrollTo(0,0);
         let searchParams = queryString.parse(props.location.search);
@@ -26,61 +33,65 @@ function Search(props) {
             searchVal = props.categories[searchParams.name];
         }
         getSearchGames(searchVal, searchParams.type);
-
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         }
     }, [getSearchGames, props.location, props.categories])
 
-    let title;
+    let searchTitle = "";
  
     switch(searchParams.type){
         case "category":
-                title = `Category: ${searchParams.name}`;
+                searchTitle = <><strong>Category:</strong> <br/> {searchParams.name}</>;
                 break
         case "query":
-            title = `Search: ${searchParams.name}`;
+            searchTitle = <><strong>Search:</strong> <br/> {searchParams.name}</>;
             break
         case "top":
-            title = "TOP GAMES"
+            searchTitle = "TOP GAMES";
             break
         case "trending":
-            title = "TRENDING GAMES"
+            searchTitle = "TRENDING GAMES";
             break
         default:
-            title = "SEARCH";
+            searchTitle = "SEARCH";
     }
+    let filterStyle = {};
 
     function handleScroll() {
+        if (window.innerHeight >= 920) {
+            return null;
+        }
         const FOOTER_POS = document.body.offsetHeight - 250;
         const BOTTOM_WIN_POS = window.scrollY + window.innerHeight;
         const FILTER = document.getElementById("filter-container");
         const SORT = document.getElementById("sort-container");
         const TITLE = document.getElementById("list-full__title");
-        if (BOTTOM_WIN_POS > FOOTER_POS && FILTER.classList.contains("fixed")) {
-            FILTER.classList.remove("fixed");
-            FILTER.classList.add("relative");
-            TITLE.classList.remove("fixed");
-            TITLE.classList.add("relative");
-            SORT.classList.remove("fixed");
-            SORT.classList.add("relative");
+        if (BOTTOM_WIN_POS > FOOTER_POS && FILTER.style.position !== "absolute") {
+            FILTER.style.position = "absolute";
+            FILTER.style.top = window.scrollY + FILTER_ABS_OFFSET + "px";
+            SORT.style.position = "absolute";
+            SORT.style.top = window.scrollY + SORT_ABS_OFFSET + "px"
+            TITLE.style.position = "absolute";
+            TITLE.style.top = window.scrollY + TITLE_ABS_OFFSET + "px";
         }
-        else if (BOTTOM_WIN_POS < FOOTER_POS && FILTER.classList.contains("relative")){
-            FILTER.classList.remove("relative");
-            FILTER.classList.add("fixed");
-            TITLE.classList.remove("relative");
-            TITLE.classList.add("fixed");
-            SORT.classList.remove("relative");
-            SORT.classList.add("fixed");
+        else if (BOTTOM_WIN_POS < FOOTER_POS && FILTER.style.position !== "fixed" ){
+            FILTER.style.position = "fixed";
+            FILTER.style.top = FILTER_FIXED_OFFSET + "px";
+            SORT.style.position = "fixed";
+            SORT.style.top = SORT_FIXED_OFFSET + "px"
+            TITLE.style.position = "fixed";
+            TITLE.style.top = TITLE_FIXED_OFFSET + "px";
         }
         
     }
 
     return (
         <div className="search-container">
-            <Filter />
-            <List listTitle={title} gameType="search" listType="full"/>
+            <Filter styleObj={filterStyle} />
+            <h2 className="list-full__title" id="list-full__title">{searchTitle}</h2>
+            <List gameType="search" listType="full"/>
         </div>
     )
 }
