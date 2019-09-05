@@ -58,6 +58,10 @@ p, a {
         &-container {
             margin-top: $headerHt;
         }
+        &__title.relative {
+            position: absolute;
+            bottom: 693px;
+        }
         &__lnk--title {
             pointer-events: none;
         }

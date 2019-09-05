@@ -18,7 +18,7 @@ function List(props) {
     const PG = props.listType === "summary" ? 0 : props.games.pg;
     const NUM_LIST_ITEMS = GAMES.length - (PG * 15) >= 15 ? 15 : GAMES.length - (PG * 15);
     const listStart = PG * 15;
-    const listEnd = props.gameType === "deal" ? 7: props.listType === "summary" ? 12 : listStart + NUM_LIST_ITEMS;
+    const listEnd = props.gameType === "deal" ? 5: props.listType === "summary" ? 12 : listStart + NUM_LIST_ITEMS;
 
     for (let i = listStart; i < listEnd; i++){
         gameArray.push(
@@ -50,7 +50,7 @@ function List(props) {
 
     return (
         <div className={`list-${props.listType}-container ${props.gameType === "deal" ? "list-deal-container" : ""}`}>
-            <h2 className={`list-${props.listType}__title`}>{props.listTitle.toUpperCase()}</h2>
+            <h2 id={`list-${props.listType}__title`} className={`list-${props.listType}__title fixed`}>{props.listTitle.toUpperCase()}</h2>
             {props.listType === "full" && <Sort />}
             <ul className={`list-inner-container list-inner-container--${props.listType}`}>
                 {gameArray}

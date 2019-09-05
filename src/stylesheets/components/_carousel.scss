@@ -1,22 +1,14 @@
-.carousel-container {
-    margin-top: $headerHt;
-    position: relative;
-    display: inline-block;
-    @include lg-screens {
-        display: flex;
-        justify-content: center;
-    }
-}
-
 .carousel {
     position: relative;
-    max-height: 70vw;
-    @include md-screens {
-        max-height: 50vw;
+    height: 70vw;
+    max-height: 350px;
+    &-flex-container {
+        margin-top: $headerHt;
+        position: relative;
+        display: inline-block;
     }
-    @include lg-screens {
-        max-height: 500px;
-        max-width: 800px;
+    &-container {
+        position: relative;
     }
     &__tag {
         position: absolute;
@@ -31,53 +23,104 @@
     &__image {
         width:125vw;
         height: 100vw;
-        @include sm-screens {
-            margin-top: 12%;
-            height: 80vw;
-        }
     }
-    &__slide-name {
+    &__slide-title {
+        opacity: 0;
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
+        font-size: 18px;
         font-weight: 700;
         background: $darkBg;
         padding: 2px 5px;
         z-index: 1;
+        transition: all ease 700ms;
+        &.selected {
+            opacity: 1;
+            transition: all ease 700ms;
+            
+        }
     }
     &__lnk {
         display:inline-block;
     }
+// -----Media Queries-----
+    @include sm-screens {
+        max-width: 550px;
+        &-flex-container {
+            display: flex;
+            justify-content: center;
+        } 
+        &__image {
+            margin-top: 15%;
+            max-height: 500px;
+        }
+    }
+    @include md-screens {
+        max-height: 300px;
+        max-width: 600px;
+    }
+    @include lg-screens {
+        max-height: 400px;
+        max-width: 700px;
+    }
+
 }
 
 .slide {
-    @include sm-screens {
-        transform: scale(1.5);
-    }
     opacity: 0;
     transition: opacity 1000ms ease;
     &.selected {
-        opacity: 0.8;
-        @include sm-screens {
-            transform: scale(1.5);
-            right:25%;
-            animation: slide-x 50000ms ease;
-        }
+        opacity: 0.7;
         &:hover {
             opacity: 1;
         }
     }
-}
-
-@keyframes slide-x {
-    0%{
-        transform: translate3d(25%,0,0) scale(1.5);
+// -----Media Queries-----
+    @include sm-screens {
+        transform: scale(1.4);
+        &.selected {
+            transform: scale(1.3);
+            right:25%;
+            perspective: 1000;
+            animation: slide-x-sm 50000ms ease;
+        }
     }
-    100%{
-        transform: translate3(0,0,0) scale(1.5);
+    @include md-screens {
+        transform: scale(1.5);
+        &.selected {
+            transform: scale(1.4);
+            right:10%;
+            animation: slide-x-md 40000ms ease;
+        }
     }
 }
 
 .control-dots {
     bottom: 25px;
 }
+
+@keyframes slide-x-sm {
+    0%{
+        transform: translateZ(0);
+    }
+    1% {
+        transform: translate3d(25%,0,0) scale(1.5);
+    }
+    100%{
+        transform: translate3(0,0,0) scale(1.3);
+    }   
+}
+
+@keyframes slide-x-md {
+    0%{
+        transform: translateZ(0);
+    }
+    1% {
+        transform: translate3d(15%,0,0) scale(1.6);
+    }
+    100%{
+        transform: translate3(0,0,0) scale(1.4);
+    }
+}
+

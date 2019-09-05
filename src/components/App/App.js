@@ -8,6 +8,7 @@ import Nav from "../Nav/Nav";
 import Home from "../Home/Home";
 import GameDetail from "../GameDetail/GameDetail";
 import Search from "../Search/Search";
+import Footer from "../Footer/Footer";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -24,7 +25,7 @@ function App(props) {
   }, [getCategories])
   return (
     <Router>
-      <div className="App" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.6) 10%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 90%), url("${require("../../Images/pattern-bg.gif")}")`}}>
+      <div className="App" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.6) 10%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.9) 90%), url("${require("../../Images/pattern-bg.gif")}")`}}>
         <div className="App-bg" >
           <header className="App-header">
             <Nav />
@@ -33,8 +34,9 @@ function App(props) {
             <Route path="/" exact component={Home}/>
             <Route path="/games" component={GameDetail}/>
             <Route path="/search" component={Search}/>
-          </Switch>
+          </Switch>          
         </div>
+        <Footer />
       </div>
     </Router>
   );

@@ -17,8 +17,10 @@ const mapDispatchToProps = dispatch => {
 
 function Hero(props) {
     const {setDetailImg} = props;
+    const GAMES = props.games.list;
+    const LOADING = props.games.isLoading;
 
-    if (props.isLoading) {
+    if (LOADING) {
         return <div>LOADING</div>
     }
 
@@ -27,37 +29,45 @@ function Hero(props) {
         setDetailImg(imgUrl);
     }
 
+    function handleSlideChange(e) {
+        let slideTitles = document.querySelectorAll(".carousel__slide-title");
+        slideTitles.forEach(slide => slide.classList.remove('selected'));
+        slideTitles[e].classList.add("selected");
+    }
+
     let slideTitleArr = [];
-    // ADD LINK LATER
-    let slideArr = props.games.map((slide,index) => {
-        slideTitleArr.push(slide.name);
+    let slideArr = GAMES.map((slide,index) => {
+        slideTitleArr.push(<p key={slide.name} className={`carousel__slide-title ${index < 1 ? "selected" : ""}`}>{slide.name}</p>);
         return (
-        <Link key={slide.name}  className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
+        <Link key={slide.name} className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
             <img className="carousel__image" src={slide.image} alt={slide.name} />
         </Link>
         )}
     )
 
     return (
-        <div className="carousel-container">
-            <Carousel
-            showThumbs={false}
-            showStatus={false}
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={12000}
-            transitionTime={1000}
-            >
-                {slideArr}
-            </Carousel>
+        <div className="carousel-flex-container">
+            <div className="carousel-container">
+                {slideTitleArr}
+                <Carousel
+                showThumbs={false}
+                showStatus={false}
+                infiniteLoop={true}
+                autoPlay={true}
+                interval={12000}
+                transitionTime={1000}
+                onChange={(e) => handleSlideChange(e)}
+                >
+                    {slideArr}
+                </Carousel>
+            </div>
         </div>
     )
 };
 
 const mapStateToProps = state => {
     return {
-        games: state.games.new.list,
-        isLoading: state.games.new.isLoading
+        games: state.games.new
     }
 }
 

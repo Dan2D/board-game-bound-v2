@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux'
 import {filterGames} from "../../actions/gamesActions";
 import {filterTypes} from "../../constants/filterTypes";
 
 import FilterList from "./FilterList";
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -14,11 +15,32 @@ const mapDispatchToProps = dispatch => {
 }
 // TODO(ADD SLIDER LATER)
 function Filter(props) {
-    
+    // useEffect(() => {
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     }
+    // }, [])
     const {filterGames} = props;
     const [toggleFilter, setToggleFilter] = useState(false);
     const [filters, setFilters] = useState([]);
     
+    
+    // function handleScroll() {
+    //     const FOOTER_POS = document.body.offsetHeight - 250;
+    //     const BOTTOM_WIN_POS = window.scrollY + window.innerHeight;
+    //     const FILTER = document.getElementById("filter-container");
+    //     if (BOTTOM_WIN_POS > FOOTER_POS && FILTER.classList.contains("fixed")) {
+    //         FILTER.classList.remove("fixed");
+    //         FILTER.classList.add("relative")
+    //     }
+    //     else if (BOTTOM_WIN_POS < FOOTER_POS && FILTER.classList.contains("relative")){
+    //         FILTER.classList.remove("relative");
+    //         FILTER.classList.add("fixed");
+    //     }
+        
+    // }
+
     function handleFilters(e, checkboxVal) {
         let data = e.target.dataset;
         let filter = filterTypes[data.name][data.filter];
@@ -33,7 +55,7 @@ function Filter(props) {
         }
     }
     return (
-        <div className="filter-container">
+        <div className="filter-container fixed" id="filter-container">
                 <button className="search__btn search__btn--filter" aria-label="filter" onClick={() => setToggleFilter(!toggleFilter)}>
                     <img src={require("../../Images/filter-icon.png")} alt="filter icon"/>
                 </button>

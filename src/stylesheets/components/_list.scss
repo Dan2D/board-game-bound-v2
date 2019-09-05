@@ -1,78 +1,16 @@
-
-.filter {
-    &-container {
-        align-self: flex-end;
-    }
-}
-
-.filter-container{
-    height: 0;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-}
-
-.filter {
-    &-container-modal {
-        @include flex(row, space-between);
-        flex-flow: wrap;
-        width: 285px;
-        left: 0;
-        right: 0;
-        margin: auto;
-        margin-top: 10px;
-        padding: 10px;
-        background: black;
-        border: 2px solid rgb(105, 105, 105);
-        border-radius: 10px;
-        &__btn--close {
-            @extend .btn--close;
-        }
-        &--show {
-            transform: translateX(0);
-            transition: transform 700ms ease-out;
-        }
-        &--hide {
-            transform: translateX(200%);
-            transition: transform 700ms ease-in;
-        }
-        @include md-screens {
-            position: absolute;
-            top: 85px;
-            left: 0;
-            right: auto;
-            width: 157px;
-            border-radius: 0 5px 5px 0;
-            margin-left: -2px;
-            padding: 2px 5px 5px 0;
-            background: rgba(0, 0, 0, 0.404);
-            &__btn--close {
-                display: none;
-            }
-            &--hide,
-            &--show {
-                transform: none;
-                transition: all 0;
-            }
-        }
-    }
-
-    &-list {
-        margin: 0 5px;
-        @include flex(row, flex-end);
-        flex-wrap: wrap;
-        }
-
-}
-
 .sort {
     &-container {
         align-self: flex-start;
         margin-left: 10px;
         @include md-screens {
-            position: fixed;
-            top: 95px;
-            z-index: 5;
+            position: absolute;
+            top: auto;
+            bottom: 646px;
+            &.fixed {
+                position: fixed;
+                top: 95px;
+                z-index: 5;
+            }
         }
         &__select {
             background: black;
@@ -195,7 +133,7 @@
             color: rgb(155, 211, 72);
             background: rgb(73, 114, 12);
             z-index: 2;
-            padding: 0;
+            padding: 3px;
             font-size: 18px;
     }
     &--summary {
