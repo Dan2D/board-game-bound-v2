@@ -13,7 +13,7 @@ function GameIcon(props) {
     return (
         <div className={`icon-set icon-set--${props.type}`}>
             <img className={min === "" && min === max ? "icon-set--none" : ""} src={require(`../../Images/${props.type}-icon.png`)} alt={`${props.type} icon`}/>
-            <span>{(props.type === "age" ? "+" : "") + iconRange}</span>
+            <span>{(props.type === "age"  && min !== "" ? "+" : "") + iconRange}</span>
         </div>
     )
 }

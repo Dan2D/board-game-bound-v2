@@ -24,6 +24,7 @@ function Search(props) {
     const TITLE_FIXED_OFFSET = 45;
     const TITLE_ABS_OFFSET = 0;
     let searchParams = queryString.parse(props.location.search);
+    let searchTitle = "";
 
     useEffect(() => {
         window.scrollTo(0,0);
@@ -37,9 +38,7 @@ function Search(props) {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         }
-    }, [getSearchGames, props.location, props.categories])
-
-    let searchTitle = "";
+    }, [getSearchGames, props.location, props.categories]);
  
     switch(searchParams.type){
         case "category":
@@ -54,10 +53,12 @@ function Search(props) {
         case "trending":
             searchTitle = "TRENDING GAMES";
             break
+        case "deal":
+            searchTitle = "HOT DEALS"
+            break
         default:
             searchTitle = "SEARCH";
-    }
-    let filterStyle = {};
+    };
 
     function handleScroll() {
         if (window.innerHeight >= 920) {
@@ -89,7 +90,7 @@ function Search(props) {
 
     return (
         <div className="search-container">
-            <Filter styleObj={filterStyle} />
+            <Filter />
             <h2 className="list-full__title" id="list-full__title">{searchTitle}</h2>
             <List gameType="search" listType="full"/>
         </div>

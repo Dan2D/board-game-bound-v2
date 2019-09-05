@@ -85,6 +85,7 @@ p, a {
         @include md-screens {
             justify-content: center;
             &--full{
+                @include flex(column, center);
                 margin-left: 160px;
             }
         }

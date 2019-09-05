@@ -32,7 +32,9 @@ function Hero(props) {
     function handleSlideChange(e) {
         let slideTitles = document.querySelectorAll(".carousel__slide-title");
         slideTitles.forEach(slide => slide.classList.remove('selected'));
-        slideTitles[e].classList.add("selected");
+        if (slideTitles[e]){
+            slideTitles[e].classList.add("selected");
+        }
     }
 
     let slideTitleArr = [];

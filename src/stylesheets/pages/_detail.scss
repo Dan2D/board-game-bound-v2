@@ -29,11 +29,6 @@
         right: 0;
         font-size: $yearFontSize;
     }
-    &__game-container {
-        @include sm-screens {
-
-        }
-    }
     &__cover {
         width:$detailCoverWidth;
         @include sm-screens {
@@ -85,6 +80,16 @@
     }
 }
 
+.description-container {
+    margin:5px 0;
+    @include md-screens {
+        position: absolute;
+        top: 50px;
+        left: 285px;
+        width: 60%;
+    }
+}
+
 .maker-container {
     margin-bottom: 20px;
     @include sm-screens {
@@ -92,14 +97,8 @@
     }
 }
 
-.description-container {
-    margin:5px 0;
-    @include md-screens {
-        position: absolute;
-        top: 45px;
-        right: 20px;
-        width: 60%;
-    }
+.price-container--detail {
+    margin-top: 100px;
 }
 
 .detail__msrp--strike {

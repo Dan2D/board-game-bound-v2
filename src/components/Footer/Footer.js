@@ -18,11 +18,13 @@ function Footer() {
             </div>
             <div className="footer-right">
                 <h4 className="footer-title footer-title--right"><strong>Powered By</strong></h4>
-                <img className="footer__logo" src={require("../../Images/bgg-logo.png")} alt="board game geek logo" />
-                <div>
+                <a href="https://boardgamegeek.com/" target="_blank" rel="noopener noreferrer">
+                    <img className="footer__logo" src={require("../../Images/bgg-logo.png")} alt="board game geek logo" />
+                </a>
+                <a href="https://www.boardgameatlas.com/" target="_blank" rel="noopener noreferrer">
                     <img className="footer__logo" src={require("../../Images/bga-logo.png")} alt="board game atlas logo" />
                     <span className="footer__logo-title">Board Game Atlas</span>
-                </div>
+                </a>
             </div>
         </div>
     )
