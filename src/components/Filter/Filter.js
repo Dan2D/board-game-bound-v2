@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import {filterGames} from "../../actions/gamesActions";
 import {filterTypes} from "../../constants/filterTypes";
 
 import FilterList from "./FilterList";
-
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -49,6 +49,10 @@ function Filter(props) {
             </div>
         </div>
     )
+}
+
+Filter.propTypes = {
+    filterGames: PropTypes.func.isRequired,
 }
 
 export default connect(null, mapDispatchToProps)(Filter)

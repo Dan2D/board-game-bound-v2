@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function PriceLnk(props) {
     return (
@@ -8,6 +9,12 @@ function PriceLnk(props) {
                 <a href={props.url} target="_blank" rel="noopener noreferrer">{props.url}</a>
             </div> 
     )
+}
+
+PriceLnk.propTypes = {
+    store: PropTypes.string,
+    price: PropTypes.string,
+    url: PropTypes.string
 }
 
 export default PriceLnk

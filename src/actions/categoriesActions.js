@@ -6,7 +6,6 @@ import axios from 'axios';
 
 
 export const getCategories = dispatch => {
-    console.log("CATEGORIES")
     dispatch({type: types.GET_CATEGORIES});
     let categoryList = [2, 10, 12, 13, 20, 22, 33, 43, 67, 74, 76, 88];
     axios.get(`https://www.boardgameatlas.com/api/game/categories?pretty=true&client_id=7pxbmyR661`)

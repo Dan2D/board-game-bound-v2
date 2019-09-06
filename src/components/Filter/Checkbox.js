@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 function Checkbox(props) {
     const [toggleCheckbox, setToggleCheckbox] = useState(false);
@@ -21,6 +22,12 @@ function Checkbox(props) {
     <span className="checkbox-custom">{props.filterName}</span>
     </div>
     )
+}
+
+Checkbox.propTypes = {
+    name: PropTypes.string,
+    filter: PropTypes.string,
+    filterName: PropTypes.string
 }
 
 export default Checkbox

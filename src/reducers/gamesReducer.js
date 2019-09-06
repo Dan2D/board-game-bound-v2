@@ -34,7 +34,6 @@ const gamesReducer = (state = initialState, action) => {
                 }
             }
         case types.GET_LIST_GAMES:
-            console.log(action.name)
             return {
                 ...state,
                 [action.name]: {
@@ -175,6 +174,19 @@ const gamesReducer = (state = initialState, action) => {
                     pg: action.payload
                 }
             }
+        case types.GET_LIST_GAMES_SUCCESS:
+        case types.GET_NEW_GAMES_SUCCESS:
+        case types.GET_SEARCH_GAMES_SUCCESS:
+        case types.GET_CATEGORIES_SUCCESS:
+            let isLoading = true;
+            if (!state.new.isLoading && !state.trending.isLoading && !state.top.isLoading) {
+                isLoading = false;
+            }
+            return {
+                ...state,
+                isLoading,
+            }
+        
         default:
             return state;
     }

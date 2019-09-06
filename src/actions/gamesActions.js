@@ -24,7 +24,8 @@ export const getNewGames = dispatch => {
     .then(gamesArr => {
         dispatch({
             type: types.GET_NEW_GAMES_SUCCESS,
-            payload: gamesArr
+            payload: gamesArr,
+            page: "home"
         })
     })
     .catch(err => dispatch({type: types.GET_NEW_GAMES_FAIL, payload: err.message}));
@@ -40,7 +41,8 @@ export const getListGames = (list) => dispatch => {
                 dispatch({
                     type: types.GET_LIST_GAMES_SUCCESS,
                     payload: gamesArray,
-                    name
+                    name,
+                    page: "list"
                 })
             })
             .catch(err => dispatch({type: types.GET_LIST_GAMES_FAIL, payload: err.message}))
@@ -60,9 +62,10 @@ export const getGameDetail = (name, year) => dispatch => {
 };
 
 export const getDetailBG = (game, id, backupImg, dispatch) => {
-    axios.get(`https://www.boardgameatlas.com/api/game/images?game_id=${id}&include_game=true&limit=1&client_id=7pxbmyR661`)
+    axios.get(`https://www.boardgameatlas.com/api/game/images?game_id=${id}&limit=5&client_id=7pxbmyR661`)
     .then(response => {
-        let bg = response.data.images ? backupImg : response.data.images[0].large;
+        let lng = response.data.images.length - 1;
+        let bg = response.data.images ? response.data.images[lng].large : backupImg;
         getDetailPrice(game, id, backupImg, bg, dispatch);
     });
 };
@@ -123,7 +126,8 @@ export const getSearchGames = (searchVal = "", type) => dispatch => {
     .then(response => {
        return dispatch({
             type: types.GET_SEARCH_GAMES_SUCCESS,
-            payload: response.data.games
+            payload: response.data.games,
+            page: "search"
         })
     })
     .catch(err => dispatch({type: types.GET_SEARCH_GAMES_FAIL, payload: err.message}))

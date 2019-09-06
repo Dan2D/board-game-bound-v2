@@ -24,6 +24,10 @@ function Hero(props) {
         return <div>LOADING</div>
     }
 
+    Hero.propTyps = {
+        games: PropTypes.arrayOf(PropTypes.object)
+    }
+
     function handleSlideClick(e) {
         let imgUrl = e.target.children[0].src;
         setDetailImg(imgUrl);
@@ -73,4 +77,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hero)
+const MemoHero = React.memo(Hero, (prevProps, nextProps) => {
+    if (prevProps.games) {
+        return false
+    }
+    return true
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MemoHero)

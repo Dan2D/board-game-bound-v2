@@ -16,6 +16,10 @@ function Pagination(props) {
    let pgArr = [];
     const NUM_OF_PGS = Math.ceil(props.listLength / 15);
 
+    Pagination.propTypes = {
+        newPage: PropTypes.func.isRequired
+    }
+
    function handlePgClick(e, i) {
        document.querySelectorAll(".list__pg-btn").forEach(btn => btn.classList.remove("active"))
        window.scrollTo(0,0);

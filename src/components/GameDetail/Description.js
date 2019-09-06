@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import parse from 'react-html-parser';
 
 
@@ -27,6 +28,12 @@ function Description(props) {
             </div>
         </div>
     )
+}
+
+Description.propTypes = {
+    rules: PropTypes.string,
+    url: PropTypes.string,
+    dscrpt: PropTypes.string
 }
 
 export default Description

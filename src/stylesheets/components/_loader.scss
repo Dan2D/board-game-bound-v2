@@ -3,13 +3,26 @@
     display: flex;
     justify-content: center;
     align-items:center;
-    z-index: 5;
+    z-index: 6;
     min-height: 100vh;
     min-width: 100vw;
     top: 0;
     right: 0;
     opacity: 1;
-    // background: rgba(0,0,0,0.9);
+    background: black;
+}
+
+.trail{
+    position: absolute;
+    &-bit {
+    height: 30px;
+    &-container {
+        position: absolute;
+        opacity: 0;
+    }
+    }
+    &-x {
+    }
 }
 
 .loading-icon-container {
@@ -28,7 +41,64 @@
 
 }
 
+
+
+@keyframes ani-bit {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    20% {
+        opacity: 1;
+    }
+    90% {
+        transform: scale(0.95);
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-x {
+    0% {
+        transform: scale(0);
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        transform: scale(2);
+    }
+    60% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes game {
+    
 
     12% {
         transform: translateX(35px) translateY(-65px);

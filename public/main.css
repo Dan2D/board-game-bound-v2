@@ -909,6 +909,7 @@ p, a {
   background: black;
   height: 250px;
   max-height: auto;
+  z-index: 5;
 }
 
 .footer-left {
@@ -977,12 +978,26 @@ p, a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 5;
+  z-index: 6;
   min-height: 100vh;
   min-width: 100vw;
   top: 0;
   right: 0;
   opacity: 1;
+  background: black;
+}
+
+.trail {
+  position: absolute;
+}
+
+.trail-bit {
+  height: 30px;
+}
+
+.trail-bit-container {
+  position: absolute;
+  opacity: 0;
 }
 
 .loading-icon-container {
@@ -1000,6 +1015,100 @@ p, a {
   left: 65px;
   -webkit-animation: game 8s ease-in-out infinite;
           animation: game 8s ease-in-out infinite;
+}
+
+@-webkit-keyframes ani-bit {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ani-bit {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes ani-x {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  60% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ani-x {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  60% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes game {
@@ -1982,7 +2091,8 @@ button {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: 110%;
+  background-size: 120%;
+  background-position: 100px -100px;
 }
 
 .detail-game-block__title-container {

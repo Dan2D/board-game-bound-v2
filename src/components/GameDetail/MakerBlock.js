@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function MakerBlock(props) {
     const designers = props.designers.length > 0 ? props.designers.join(", ") : "No Designers Found...";
@@ -18,6 +19,12 @@ function MakerBlock(props) {
             <p className="detail-game-block__maker-text"><strong>Publisher: </strong>{publisher}</p>
         </div>
     )
+}
+
+MakerBlock.propTypes = {
+    designers: PropTypes.array,
+    artists: PropTypes.array,
+    publisher: PropTypes.string
 }
 
 export default MakerBlock

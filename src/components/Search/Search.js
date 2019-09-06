@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
+import {handleSearchScroll,  handleSearchTitle} from "../../utils/compUtils";
 import {getSearchGames} from "../../actions/gamesActions";
 import { connect } from 'react-redux'
 
@@ -17,77 +18,24 @@ const mapDispatchToProps = dispatch => {
 
 function Search(props) {
     const {getSearchGames} = props;
-    const FILTER_FIXED_OFFSET = 60;
-    const FILTER_ABS_OFFSET = 15;
-    const SORT_FIXED_OFFSET = 115;
-    const SORT_ABS_OFFSET = 70;
-    const TITLE_FIXED_OFFSET = 45;
-    const TITLE_ABS_OFFSET = 0;
     let searchParams = queryString.parse(props.location.search);
-    let searchTitle = "";
+    const searchTitle = handleSearchTitle(searchParams);
 
     useEffect(() => {
         window.scrollTo(0,0);
         let searchParams = queryString.parse(props.location.search);
         let searchVal = searchParams.name;
+
         if (searchParams.type === "category") {
             searchVal = props.categories[searchParams.name];
         }
         getSearchGames(searchVal, searchParams.type);
-        window.addEventListener('scroll', handleScroll);
+        setTimeout(() => {window.addEventListener('scroll', handleSearchScroll);}, 800);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleSearchScroll);
         }
     }, [getSearchGames, props.location, props.categories]);
  
-    switch(searchParams.type){
-        case "category":
-                searchTitle = <><strong>Category:</strong> <br/> {searchParams.name}</>;
-                break
-        case "query":
-            searchTitle = <><strong>Search:</strong> <br/> {searchParams.name}</>;
-            break
-        case "top":
-            searchTitle = "TOP GAMES";
-            break
-        case "trending":
-            searchTitle = "TRENDING GAMES";
-            break
-        case "deal":
-            searchTitle = "HOT DEALS"
-            break
-        default:
-            searchTitle = "SEARCH";
-    };
-
-    function handleScroll() {
-        if (window.innerHeight >= 920) {
-            return null;
-        }
-        const FOOTER_POS = document.body.offsetHeight - 250;
-        const BOTTOM_WIN_POS = window.scrollY + window.innerHeight;
-        const FILTER = document.getElementById("filter-container");
-        const SORT = document.getElementById("sort-container");
-        const TITLE = document.getElementById("list-full__title");
-        if (BOTTOM_WIN_POS > FOOTER_POS && FILTER.style.position !== "absolute") {
-            FILTER.style.position = "absolute";
-            FILTER.style.top = window.scrollY + FILTER_ABS_OFFSET + "px";
-            SORT.style.position = "absolute";
-            SORT.style.top = window.scrollY + SORT_ABS_OFFSET + "px"
-            TITLE.style.position = "absolute";
-            TITLE.style.top = window.scrollY + TITLE_ABS_OFFSET + "px";
-        }
-        else if (BOTTOM_WIN_POS < FOOTER_POS && FILTER.style.position !== "fixed" ){
-            FILTER.style.position = "fixed";
-            FILTER.style.top = FILTER_FIXED_OFFSET + "px";
-            SORT.style.position = "fixed";
-            SORT.style.top = SORT_FIXED_OFFSET + "px"
-            TITLE.style.position = "fixed";
-            TITLE.style.top = TITLE_FIXED_OFFSET + "px";
-        }
-        
-    }
-
     return (
         <div className="search-container">
             <Filter />
@@ -95,6 +43,17 @@ function Search(props) {
             <List gameType="search" listType="full"/>
         </div>
     )
+}
+
+Search.propTypes = {
+    search: PropTypes.shape({
+        list: PropTypes.arrayOf(PropTypes.object),
+        modList: PropTypes.arrayOf(PropTypes.object),
+        pg: PropTypes.number,
+        isLoading: PropTypes.bool
+    }),
+    categories: PropTypes.arrayOf(PropTypes.object),
+    getSearchGames: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {

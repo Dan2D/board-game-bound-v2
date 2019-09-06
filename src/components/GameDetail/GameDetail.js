@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import {getGameDetail} from "../../actions/gamesActions";
@@ -21,7 +22,6 @@ const mapDispatchToProps = dispatch => {
 
 
 function GameDetail(props) {
-    console.log(props)
     const {getGameDetail} = props;
     const GAME = props.detail.game;
     const ERROR = props.detail.error;
@@ -66,6 +66,17 @@ function GameDetail(props) {
             </div>
         </div>
     )
+}
+
+GameDetail.propTypes = {
+    detail: PropTypes.shape({
+        game: PropTypes.object,
+        bg: PropTypes.string,
+        cover: PropTypes.string,
+        error: PropTypes.string,
+        isLoading: PropTypes.string,
+        purchaseInfo: PropTypes.array
+    })
 }
 
 const mapStateToProps = state => {

@@ -8,6 +8,7 @@
         background: black;
         height: 250px;
         max-height: auto;
+        z-index: 5;
     }
     &-left {
         @include flex(column, space-between);

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 import PriceLnk from "../GamePrice/PriceLnk";
 import CategoryBtn from "../Categories/CategoryBtn";
@@ -27,6 +28,13 @@ function Accordian(props) {
             </div>
         </div>
     )
+}
+
+Accordian.propTypes = {
+    content: PropTypes.arrayOf(PropTypes.object),
+    type: PropTypes.string,
+    title: PropTypes.string,
+    class: PropTypes.string
 }
 
 export default Accordian

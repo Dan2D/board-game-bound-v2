@@ -6,7 +6,6 @@ let initialState = {};
 const categoriesReducer = (state = initialState, action) => {
     switch(action.type){
         case types.GET_CATEGORIES:
-            console.log("REDUCER")
             return {
                 ...state,
                 list: [],
@@ -14,7 +13,6 @@ const categoriesReducer = (state = initialState, action) => {
                 isLoading: true
             }
         case types.GET_CATEGORIES_SUCCESS:
-            console.log("REDUCER SUCCESS")
             return {
                 ...state,
                 list: action.payload,

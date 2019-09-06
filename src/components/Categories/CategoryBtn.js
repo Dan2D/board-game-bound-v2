@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 
 function CategoryBtn(props) {
@@ -9,6 +10,10 @@ function CategoryBtn(props) {
             </button>
         </Link>
     )
+}
+
+CategoryBtn.propTypes = {
+    btnText: PropTypes.string.isRequired,
 }
 
 export default CategoryBtn

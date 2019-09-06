@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 function Rating(props) {
@@ -36,6 +37,12 @@ function Rating(props) {
              <p className="rating__reviews">({props.numReviews} Reviews)</p>
         </div>
     )
+}
+
+Rating.propTypes = {
+    type: PropTypes.string,
+    rating: PropTypes.number,
+    numReviews: PropTypes.number
 }
 
 export default Rating

@@ -23,6 +23,10 @@ function Nav(props) {
     )
 }
 
+Nav.propTypes = {
+    content: PropTypes.string.isRequired
+}
+
 const mapStateToProps = state => {
     return {
         content: state.games.content

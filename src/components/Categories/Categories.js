@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
 import Accordian from "../Accordian/Accordian";
@@ -30,6 +31,14 @@ function Categories(props) {
             </div>
         </div>
     )
+}
+
+Categories.propTypes = {
+    categories: PropTypes.shape({
+        list: PropTypes.arrayOf(PropTypes.object),
+        error: PropTypes.string,
+        isLoading: PropTypes.bool
+    })
 }
 
 const mapStateToProps = state => {

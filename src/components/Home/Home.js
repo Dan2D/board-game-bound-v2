@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import {getListGames, getNewGames} from "../../actions/gamesActions";
 import {getCategories} from "../../actions/categoriesActions";
 import {TRENDING_GAMES, TOP_GAMES, DEAL_GAMES} from "../../constants/apiConstants";
+import {useMountEffect} from "../../utils/compUtils";
 
 import Hero from "../Hero/Hero";
 import Categories from "../Categories/Categories";
@@ -26,13 +28,31 @@ const mapDispatchToProps = dispatch => {
 function Home(props) {
     const {getListGames, getNewGames, getCategories} = props
 
-    useEffect(() => {
+    useMountEffect(() => {
+      if (props.newGames.length && props.trendingGames.length && 
+        props.dealGames.length && props.topGames.length) {
+        return;
+      }
       getNewGames();
       getListGames(TRENDING_GAMES);
       getListGames(TOP_GAMES);
-      getListGames(DEAL_GAMES);
       getCategories();
-    }, [getListGames, getNewGames, getCategories])
+      if (window.innerWidth > 992) {
+        getListGames(DEAL_GAMES);
+      }
+    })
+
+    Home.propTypes = {
+      getNewGames: PropTypes.func,
+      getListGames: PropTypes.func,
+      getCategories: PropTypes.func,
+      newGames: PropTypes.arrayOf(PropTypes.object),
+      trendingGames: PropTypes.arrayOf(PropTypes.object),
+      topGames: PropTypes.arrayOf(PropTypes.object),
+      dealGames: PropTypes.arrayOf(PropTypes.object),
+    }
+
+    console.log("HOME")
     return (
         <div>
             <Hero />
@@ -50,4 +70,13 @@ function Home(props) {
     )
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+const mapStateToProps = state => {
+  return {
+    newGames: state.games.new.list,
+    trendingGames: state.games.trending.list,
+    topGames: state.games.top.list,
+    dealGames: state.games.deal.list
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Rating from "../Rating/Rating";
 import GameIcon from "../GameIcon/GameIcon";
 import GamePrice from "../GamePrice/GamePrice";
 
 function GameMin(props) {
+    const price = parseFloat(props.discount) < 0 ? props.msrp : props.price;
     return (
         <li className={`list-item list-item--${props.type} ${props.gameType === "deal" ? "list-item--deal" : ""}`}>
         <div className={`list-item__game-block list-item--${props.type}__game-block`}>
@@ -29,11 +31,31 @@ function GameMin(props) {
                     <GameIcon min={props.minPlayers} max={props.maxPlayers} type="player" />
                     <GameIcon min={props.minTime} max={props.maxTime} type="time" />
                 </div>
-                <GamePrice type={props.type} msrp={props.msrp} price={props.price} discount={props.discount} />
+                <GamePrice type={props.type} msrp={props.msrp} price={price} discount={props.discount} />
             </div>
         </div>
     </li>
     )
+}
+
+GameMin.propTypes = {
+    id: PropTypes.string,
+    rank: PropTypes.number,
+    type: PropTypes.string,
+    gameType: PropTypes.string,
+    gameCover: PropTypes.string,
+    name: PropTypes.string,
+    yearPub: PropTypes.string,
+    rating: PropTypes.string,
+    numReviews: PropTypes.number,
+    minPlayers: PropTypes.number,
+    maxPlayers: PropTypes.number,
+    minTime: PropTypes.number,
+    maxTime: PropTypes.number,
+    age: PropTypes.number,
+    msrp: PropTypes.string,
+    price: PropTypes.string,
+    discount: PropTypes.string
 }
 
 export default GameMin

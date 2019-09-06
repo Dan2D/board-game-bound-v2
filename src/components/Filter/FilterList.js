@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import Checkbox from "./Checkbox";
 import {filterTypes} from "../../constants/filterTypes";
 
@@ -23,6 +24,11 @@ function FilterList(props) {
             </div>
         </div>
     )
+}
+
+FilterList.propTypes = {
+    title: PropTypes.string.isRequired,
+    filter: PropTypes.string.isRequired
 }
 
 export default FilterList
