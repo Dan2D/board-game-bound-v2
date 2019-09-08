@@ -6,28 +6,27 @@ function Rating(props) {
     let color;
     let rating = props.rating ? props.rating.toFixed(1) : "?";
     if (props.rating) {
-        switch(props.rating.toFixed(0)){
-            case "0":
-            case "1": 
-                color = "#007360";
+        switch(true){
+            case props.rating.toFixed(1) > 4:
+                color = "rgb(176, 181, 46)";
                 break
-            case "2":
-                color = "#007951";
+            case props.rating.toFixed(1) > 3:
+                color = "rgb(48, 123, 71)";
                 break
-            case "3":
-                color = "#56A500";
+            case props.rating.toFixed(1) > 2:
+                color = "rgb(36, 102, 108)";
                 break
-            case "4":
-                color = "#AEB500";
+            case props.rating.toFixed(1) > 1:
+                color = "rgb(19, 70, 96)";
                 break
-            case "5":
-                color = "#B6B200";
+            case props.rating.toFixed(1) > 0:
+                color = "rgb(19, 70, 96)";
                 break
             default:
-                color = '#5f829c ';
+                color = 'rgb(94, 106, 115)';
         }
     }
-  else {color = '#5f829c '}
+  else {color = 'rgb(94, 106, 115)'}
 
     return (
         <div 

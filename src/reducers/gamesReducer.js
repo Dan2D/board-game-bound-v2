@@ -11,6 +11,7 @@ const gamesReducer = (state = initialState, action) => {
                 content: "home",
                 new: {
                     ...state.new,
+                    error: null,
                     isLoading: true
                 }
             }
@@ -38,6 +39,7 @@ const gamesReducer = (state = initialState, action) => {
                 ...state,
                 [action.name]: {
                     ...state[action.name],
+                    error: null,
                     isLoading: true
                 },
             }
@@ -108,9 +110,9 @@ const gamesReducer = (state = initialState, action) => {
                 ...state,
                 content: "search",
                 search: {
-                    list: [],
-                    modList: [],
+                    ...state.search,
                     pg: 0,
+                    error: null,
                     isLoading: true
                 }
             }
@@ -173,20 +175,7 @@ const gamesReducer = (state = initialState, action) => {
                     ...state.search,
                     pg: action.payload
                 }
-            }
-        case types.GET_LIST_GAMES_SUCCESS:
-        case types.GET_NEW_GAMES_SUCCESS:
-        case types.GET_SEARCH_GAMES_SUCCESS:
-        case types.GET_CATEGORIES_SUCCESS:
-            let isLoading = true;
-            if (!state.new.isLoading && !state.trending.isLoading && !state.top.isLoading) {
-                isLoading = false;
-            }
-            return {
-                ...state,
-                isLoading,
-            }
-        
+            }        
         default:
             return state;
     }

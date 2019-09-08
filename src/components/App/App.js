@@ -9,11 +9,12 @@ import Footer from "../Footer/Footer";
 import Loader from "../Loader/Loader";
 
 
+
 function App() {
   return (
     <Router>
       <div className="App" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.6) 10%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.9) 90%), url("${require("../../Images/pattern-bg.gif")}")`}}>
-        <Loader />
+        {/* <Loader /> */}
           <header className="App-header">
             <Nav />
           </header>

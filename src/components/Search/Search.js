@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 
 import Filter from "../Filter/Filter";
 import List from "../List/List";
+import NotFound from "../NotFound/NotFound";
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -20,6 +21,7 @@ function Search(props) {
     const {getSearchGames} = props;
     let searchParams = queryString.parse(props.location.search);
     const searchTitle = handleSearchTitle(searchParams);
+    const LIST = props.search.list;
 
     useEffect(() => {
         window.scrollTo(0,0);
@@ -29,12 +31,18 @@ function Search(props) {
         if (searchParams.type === "category") {
             searchVal = props.categories[searchParams.name];
         }
+
         getSearchGames(searchVal, searchParams.type);
         setTimeout(() => {window.addEventListener('scroll', handleSearchScroll);}, 800);
+
         return () => {
             window.removeEventListener('scroll', handleSearchScroll);
         }
     }, [getSearchGames, props.location, props.categories]);
+
+    if (props.search.error) {
+        return <NotFound />
+    }
  
     return (
         <div className="search-container">
@@ -52,7 +60,7 @@ Search.propTypes = {
         pg: PropTypes.number,
         isLoading: PropTypes.bool
     }),
-    categories: PropTypes.arrayOf(PropTypes.object),
+    categories: PropTypes.object,
     getSearchGames: PropTypes.func.isRequired
 }
 
@@ -63,4 +71,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+const MemoSearch = React.memo(Search, (prevProps, nextProps) => {
+    if (prevProps.search.list === nextProps.search.list) {
+        return false
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MemoSearch)

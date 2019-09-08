@@ -1,6 +1,6 @@
 export const initialState = {
     categories: {
-        list: [],
+        list: {},
         error: null,
         isLoading: true
     },

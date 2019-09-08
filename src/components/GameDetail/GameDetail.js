@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import GameIcon from "../GameIcon/GameIcon";
 import Description from "./Description";
 import MakerBlock from "./MakerBlock";
 import GamePrice from "../GamePrice/GamePrice";
+import DetailLoader from "../Loader/DetailLoader";
 
 
 const mapDispatchToProps = dispatch => {
@@ -22,6 +23,7 @@ const mapDispatchToProps = dispatch => {
 
 
 function GameDetail(props) {
+    const [loadingDelay, setLoadingDelay] = useState(true);
     const {getGameDetail} = props;
     const GAME = props.detail.game;
     const ERROR = props.detail.error;
@@ -31,17 +33,19 @@ function GameDetail(props) {
     const BG = props.detail.bg;
 
     useEffect(() => {
+        window.scrollTo(0,0);
         let searchParams = queryString.parse(props.location.search);
         getGameDetail(searchParams.name, searchParams.year);
     }, [getGameDetail, props.location]);
 
-    if (LOADING) {
-        return <div>GAME LOADING</div>
+    if (loadingDelay) {
+        setTimeout(() => setLoadingDelay(false), 4500);
+        return <DetailLoader loading={LOADING}/>
     }
     if (ERROR !== null) {
-        console.log(ERROR)
         return <NotFound />
     }
+
     return (
         <div className="detail-game-block">
             <img className="detail-game-block__bg" style={{backgroundImage: `url("${BG}")`}} src={require("../../Images/bg-overlay.png")} alt="board game cover" />
@@ -74,7 +78,7 @@ GameDetail.propTypes = {
         bg: PropTypes.string,
         cover: PropTypes.string,
         error: PropTypes.string,
-        isLoading: PropTypes.string,
+        isLoading: PropTypes.bool,
         purchaseInfo: PropTypes.array
     })
 }

@@ -34,11 +34,7 @@ function Categories(props) {
 }
 
 Categories.propTypes = {
-    categories: PropTypes.shape({
-        list: PropTypes.arrayOf(PropTypes.object),
-        error: PropTypes.string,
-        isLoading: PropTypes.bool
-    })
+    categories: PropTypes.object
 }
 
 const mapStateToProps = state => {

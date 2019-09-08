@@ -31,10 +31,10 @@ function Accordian(props) {
 }
 
 Accordian.propTypes = {
-    content: PropTypes.arrayOf(PropTypes.object),
-    type: PropTypes.string,
-    title: PropTypes.string,
-    class: PropTypes.string
+    content: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ])
 }
 
 export default Accordian

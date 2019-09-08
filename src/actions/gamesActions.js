@@ -65,7 +65,7 @@ export const getDetailBG = (game, id, backupImg, dispatch) => {
     axios.get(`https://www.boardgameatlas.com/api/game/images?game_id=${id}&limit=5&client_id=7pxbmyR661`)
     .then(response => {
         let lng = response.data.images.length - 1;
-        let bg = response.data.images ? response.data.images[lng].large : backupImg;
+        let bg = response.data.images.length ? response.data.images[lng].large : backupImg;
         getDetailPrice(game, id, backupImg, bg, dispatch);
     });
 };
@@ -124,11 +124,14 @@ export const getSearchGames = (searchVal = "", type) => dispatch => {
     }
     axios.get(url)
     .then(response => {
+        if (response.data.games.length < 1) {
+            return dispatch({type: types.GET_SEARCH_GAMES_FAIL, payload: "No Games Found"});
+        }
        return dispatch({
             type: types.GET_SEARCH_GAMES_SUCCESS,
             payload: response.data.games,
             page: "search"
-        })
+        });
     })
     .catch(err => dispatch({type: types.GET_SEARCH_GAMES_FAIL, payload: err.message}))
 };

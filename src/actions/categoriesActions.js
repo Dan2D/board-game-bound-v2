@@ -1,6 +1,4 @@
 import * as types from "../constants/types";
-import * as apiUtil from "../utils/apiUtils";
-import * as apiConst from "../constants/apiConstants";
 import axios from 'axios';
 
 

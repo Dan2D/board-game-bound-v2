@@ -12,13 +12,14 @@
 
 .not-found {
     @include flex(column, center, center);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    position: relative;
+    min-height: 90vh;
     &__img {
         width: 80%;
-        max-width: 512px;
+        max-width: 412px;
+    }
+    &_msg {
+        font-size: 18px;
     }
 }
 
