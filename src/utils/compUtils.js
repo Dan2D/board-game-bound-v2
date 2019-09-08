@@ -60,4 +60,4 @@ export function handleSearchTitle (searchParams ) {
             searchTitle = "SEARCH";
     };
     return searchTitle;
-}
+};

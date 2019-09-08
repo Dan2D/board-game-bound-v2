@@ -9,7 +9,7 @@ function Description(props) {
     return (
         <div className="description-container">
             <p className="detail-game-block__dscrpt-title"><strong>Description</strong></p>
-            <p className="detail-game-block__dscrpt-body" id="description" >{dscrpt}</p>
+            <div className="detail-game-block__dscrpt-body" id="description" >{dscrpt}</div>
             <div className="detail-game-block__site-url">
                 {props.url && <>
                     <p><strong>Website:</strong></p>

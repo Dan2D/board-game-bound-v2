@@ -19,7 +19,7 @@ function Searchbar(props) {
     return (
         <div className="searchbar-container">
             <input className="searchbar__input" type="text" value={input} placeholder="Search..." onKeyDown={checkInput} onChange={handleSearchInput}/>
-            <Link to={`/search?name=${input}&type=query`} className="searchbar__lnk" >Search</Link>
+            <Link to={`/search?name=${input}&type=query`} className="searchbar__lnk" onClick={() => setInput("")}>Search</Link>
         </div>
     )
 }

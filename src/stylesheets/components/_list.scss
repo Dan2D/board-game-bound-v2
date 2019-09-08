@@ -5,6 +5,7 @@
         @include md-screens {
                 position: fixed;
                 top: 115px;
+                left: 0;
                 z-index: 4;
         }
         &__select {

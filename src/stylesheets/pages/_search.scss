@@ -1,4 +1,5 @@
 .search-container {
+    @include flex(row, space-around);
     position: relative;
     margin-top: $headerHt;
     min-height: 100vh;
