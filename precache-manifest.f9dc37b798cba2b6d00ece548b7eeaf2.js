@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c335bf2a7fc02d1c3834de579ab5102",
+    "revision": "43f9cdb71df23ccaaab5830e8b8731de",
     "url": "/board-game-bound-v2/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/board-game-bound-v2/static/css/2.3c1ddb0a.chunk.css"
   },
   {
-    "revision": "2b86d23fafa4e374d4cd",
+    "revision": "731501d5bb2642d7f1d0",
     "url": "/board-game-bound-v2/static/css/main.b1c576c0.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/board-game-bound-v2/static/js/2.2e6a6f49.chunk.js"
   },
   {
-    "revision": "2b86d23fafa4e374d4cd",
-    "url": "/board-game-bound-v2/static/js/main.9d2db0db.chunk.js"
+    "revision": "731501d5bb2642d7f1d0",
+    "url": "/board-game-bound-v2/static/js/main.f91b7116.chunk.js"
   },
   {
     "revision": "568f22e4a084982dc650",
