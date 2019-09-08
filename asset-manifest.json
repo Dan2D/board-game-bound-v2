@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/board-game-bound-v2/static/css/main.b1c576c0.chunk.css",
-    "main.js": "/board-game-bound-v2/static/js/main.d312a19f.chunk.js",
-    "main.js.map": "/board-game-bound-v2/static/js/main.d312a19f.chunk.js.map",
+    "main.js": "/board-game-bound-v2/static/js/main.d8cb171d.chunk.js",
+    "main.js.map": "/board-game-bound-v2/static/js/main.d8cb171d.chunk.js.map",
     "runtime~main.js": "/board-game-bound-v2/static/js/runtime~main.5176f877.js",
     "runtime~main.js.map": "/board-game-bound-v2/static/js/runtime~main.5176f877.js.map",
     "static/css/2.3c1ddb0a.chunk.css": "/board-game-bound-v2/static/css/2.3c1ddb0a.chunk.css",
-    "static/js/2.b4151b5f.chunk.js": "/board-game-bound-v2/static/js/2.b4151b5f.chunk.js",
-    "static/js/2.b4151b5f.chunk.js.map": "/board-game-bound-v2/static/js/2.b4151b5f.chunk.js.map",
+    "static/js/2.c548de05.chunk.js": "/board-game-bound-v2/static/js/2.c548de05.chunk.js",
+    "static/js/2.c548de05.chunk.js.map": "/board-game-bound-v2/static/js/2.c548de05.chunk.js.map",
     "index.html": "/board-game-bound-v2/index.html",
-    "precache-manifest.8aaadcd856fa6d0f492ed8a319565fe9.js": "/board-game-bound-v2/precache-manifest.8aaadcd856fa6d0f492ed8a319565fe9.js",
+    "precache-manifest.dac179cf0cfa39a6b2202c97f05eb6c7.js": "/board-game-bound-v2/precache-manifest.dac179cf0cfa39a6b2202c97f05eb6c7.js",
     "service-worker.js": "/board-game-bound-v2/service-worker.js",
     "static/css/2.3c1ddb0a.chunk.css.map": "/board-game-bound-v2/static/css/2.3c1ddb0a.chunk.css.map",
     "static/css/main.b1c576c0.chunk.css.map": "/board-game-bound-v2/static/css/main.b1c576c0.chunk.css.map",
     "static/media/bg-overlay.png": "/board-game-bound-v2/static/media/bg-overlay.1e49d7a1.png",
-    "static/media/loading-icon.png": "/board-game-bound-v2/static/media/loading-icon.340147ed.png",
+    "static/media/not-found.svg": "/board-game-bound-v2/static/media/not-found.c0fb014b.svg",
     "static/media/pattern-bg.gif": "/board-game-bound-v2/static/media/pattern-bg.3fa4654e.gif"
   }
 }
