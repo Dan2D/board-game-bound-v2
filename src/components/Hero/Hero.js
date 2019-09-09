@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom';
 import {setDetailImg} from "../../actions/gamesActions";
-import PropTypes from 'prop-types'
+import LazyComponent from 'react-lazyload';
+import PropTypes from 'prop-types';
 
 import {Carousel} from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -45,9 +46,11 @@ function Hero(props) {
     let slideArr = GAMES.map((slide,index) => {
         slideTitleArr.push(<p key={slide.name} className={`carousel__slide-title ${index < 1 ? "selected" : ""}`}>{slide.name}</p>);
         return (
-        <Link key={slide.name} className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
-            <img className="carousel__image" src={slide.image} alt={slide.name} />
-        </Link>
+            <LazyComponent offset={100} once overflow={true}>
+                <Link key={slide.name} className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
+                    <img className="carousel__image" src={slide.image} alt={slide.name} />
+                </Link>
+            </LazyComponent>
         )}
     )
 

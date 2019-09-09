@@ -8,7 +8,7 @@ function Rating(props) {
     if (props.rating) {
         switch(true){
             case props.rating.toFixed(1) > 4:
-                color = "rgb(176, 181, 46)";
+                color = "rgb(153, 153, 0)";
                 break
             case props.rating.toFixed(1) > 3:
                 color = "rgb(48, 123, 71)";

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import {getListGames, getNewGames} from "../../actions/gamesActions";
-import {getCategories} from "../../actions/categoriesActions";
 import {TRENDING_GAMES, TOP_GAMES, DEAL_GAMES} from "../../constants/apiConstants";
 import {useMountEffect} from "../../utils/compUtils";
 
@@ -18,15 +17,12 @@ const mapDispatchToProps = dispatch => {
       },
       getNewGames: () => {
         dispatch(getNewGames);
-      },
-      getCategories: () => {
-        dispatch(getCategories);
       }
     }
   }
 
 function Home(props) {
-    const {getListGames, getNewGames, getCategories} = props
+    const {getListGames, getNewGames} = props
 
     useMountEffect(() => {
       if (props.newGames.length && props.trendingGames.length && 
@@ -36,7 +32,6 @@ function Home(props) {
       getNewGames();
       getListGames(TRENDING_GAMES);
       getListGames(TOP_GAMES);
-      getCategories();
       if (window.innerWidth > 992) {
         getListGames(DEAL_GAMES);
       }

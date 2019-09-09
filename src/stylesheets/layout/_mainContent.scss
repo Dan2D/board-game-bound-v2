@@ -46,7 +46,7 @@ p, a {
             position: absolute;
             bottom: 0;
             right: 0;
-            font-size: 13px;
+            font-size: 16px;
             margin-right: 10px;
             align-self: flex-end;
             &--title {
@@ -74,7 +74,7 @@ p, a {
     &-deal-container {
         display: none;
         @include lg-screens {
-            @include flex(column, center);
+            @include flex(column, center, center);
             & .list-inner-container {
                 align-self: center;
                 width: 200px;

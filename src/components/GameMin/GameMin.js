@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+
 import Rating from "../Rating/Rating";
 import GameIcon from "../GameIcon/GameIcon";
 import GamePrice from "../GamePrice/GamePrice";
@@ -7,7 +9,7 @@ import GamePrice from "../GamePrice/GamePrice";
 function GameMin(props) {
     const price = parseFloat(props.discount) < 0 ? props.msrp : props.price;
     return (
-        <li className={`list-item list-item--${props.type} ${props.gameType === "deal" ? "list-item--deal" : ""}`}>
+        <div className={`list-item list-item--${props.type} ${props.gameType === "deal" ? "list-item--deal" : ""}`}>
         <div className={`list-item__game-block list-item--${props.type}__game-block`}>
         {props.gameType !== "deal" && <span className={`game-block__rank ${props.gameType === "deal" ? "game-block--deal__rank" : ""}`}>#{props.rank}</span>}
         {props.gameType === "deal" && (<>
@@ -34,7 +36,7 @@ function GameMin(props) {
                 <GamePrice type={props.type} msrp={props.msrp} price={price} discount={props.discount} />
             </div>
         </div>
-    </li>
+    </div>
     )
 }
 

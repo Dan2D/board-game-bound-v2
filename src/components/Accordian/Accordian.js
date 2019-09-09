@@ -8,6 +8,9 @@ function Accordian(props) {
     const CONTENT = props.content;
 
     function genItemArr (content, type) {
+        if (content.length < 1) {
+            return <p>No Stock Available</p>
+        }
         if (type === "price"){
             return content.map(item => {
                 return <PriceLnk key={item.store_name} store={item.store_name} price={item.price_text} url={item.url} />

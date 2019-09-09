@@ -56,6 +56,9 @@
         @include sm-screens {
             display: none;
         }
+        &include lg-screens {
+            max-width: 200px;
+        }
     }
 }
 

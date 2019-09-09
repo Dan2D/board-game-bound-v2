@@ -25,6 +25,12 @@
         }
     }
     @include lg-screens {
+        &-container {
+            @include flex(column, flex-start, center);
+        }
+        &-container--btns {
+            max-width: 320px;
+        }
         &__title {
             margin-left: 10px;
         }
