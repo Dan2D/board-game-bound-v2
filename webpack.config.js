@@ -3,6 +3,10 @@ const BrotliPlugin = require('brotli-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
+    entry: "./src/index.js",
+    output: {
+        filename: 'bundle.js'
+    },
     plugins: [
         new CompressionPlugin({
             filename: '[path].gz[query]',
@@ -17,6 +21,10 @@ module.exports = {
             threshold: 10240,
             minRatio: 0.8
         }),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'disabled',
+            generateStatsFile: true,
+            statsOptions: { source: false }
+        })
     ]
 }

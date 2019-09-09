@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "43f9cdb71df23ccaaab5830e8b8731de",
+    "revision": "7395a45d5807c6327d63d3ac79d9430f",
     "url": "/board-game-bound-v2/index.html"
   },
   {
-    "revision": "ede36894abeb57514081",
+    "revision": "6f6868c499f24cf87f8a",
     "url": "/board-game-bound-v2/static/css/2.3c1ddb0a.chunk.css"
   },
   {
-    "revision": "731501d5bb2642d7f1d0",
+    "revision": "a07104744a8f77c48e54",
     "url": "/board-game-bound-v2/static/css/main.b1c576c0.chunk.css"
   },
   {
-    "revision": "ede36894abeb57514081",
-    "url": "/board-game-bound-v2/static/js/2.2e6a6f49.chunk.js"
+    "revision": "6f6868c499f24cf87f8a",
+    "url": "/board-game-bound-v2/static/js/2.08626a69.chunk.js"
   },
   {
-    "revision": "731501d5bb2642d7f1d0",
-    "url": "/board-game-bound-v2/static/js/main.f91b7116.chunk.js"
+    "revision": "a07104744a8f77c48e54",
+    "url": "/board-game-bound-v2/static/js/main.2270cff7.chunk.js"
   },
   {
-    "revision": "568f22e4a084982dc650",
-    "url": "/board-game-bound-v2/static/js/runtime~main.5176f877.js"
+    "revision": "a07dade2a2a280970844",
+    "url": "/board-game-bound-v2/static/js/runtime~main.80bccccb.js"
   },
   {
     "revision": "1e49d7a15f1f18719748d6fa2778364a",
