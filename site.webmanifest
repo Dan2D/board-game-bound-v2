@@ -2,8 +2,8 @@
     "short_name":"BGB",
     "start_url":"/",
     "icons":[
-        {"src": "/public/Images/android-chrome-192x192.png","type":"image/png"},
-        {"src":"/public/Images/android-chrome-512x512.png", "type":"image/png"}],
+        {"src": "/Images/android-chrome-192x192.png","type":"image/png"},
+        {"src":"/Images/android-chrome-512x512.png", "type":"image/png"}],
     "theme_color":"#000000",
     "background_color":"#000000",
     "display":"standalone"}
