@@ -1464,9 +1464,8 @@ button {
             justify-content: center;
   }
   .carousel__image {
-    width: auto;
     margin-top: 15%;
-    max-height: 250px;
+    max-height: 500px;
   }
 }
 
