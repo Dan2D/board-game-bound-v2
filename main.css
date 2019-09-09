@@ -1465,7 +1465,7 @@ button {
   }
   .carousel__image {
     margin-top: 15%;
-    max-height: 500px;
+    max-height: 250px;
   }
 }
 
