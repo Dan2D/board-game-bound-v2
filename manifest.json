@@ -1,7 +1,7 @@
 {
-    "name": "Board Game Bound",
+    "name": "boardgamebound",
     "short_name": "BGB",
-    "starturl": "/#",
+    "starturl": "https://dan2d.github.io/board-game-bound-v2/#/",
     "icons": [
         {
             "src": "/android-chrome-96x96.png",
