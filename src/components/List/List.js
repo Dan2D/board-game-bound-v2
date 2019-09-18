@@ -1,5 +1,4 @@
 import React from 'react';
-import LazyComponent from 'react-lazyload';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -24,7 +23,6 @@ function List(props) {
 
     for (let i = listStart; i < listEnd; i++){
         gameArray.push(
-            <LazyComponent offset={200}>
                 <li key={GAMES[i].id}  >
                     <Link to={`/games?name=${GAMES[i].name}&year=${GAMES[i].year_published}`}>
                         <GameMin  
@@ -49,7 +47,6 @@ function List(props) {
                         />
                     </Link>
                 </li> 
-            </LazyComponent>
         )}
 
 
