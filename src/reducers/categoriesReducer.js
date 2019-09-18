@@ -8,7 +8,7 @@ const categoriesReducer = (state = initialState, action) => {
         case types.GET_CATEGORIES:
             return {
                 ...state,
-                list: [],
+                list: {},
                 error: null,
                 isLoading: true
             }
@@ -21,7 +21,7 @@ const categoriesReducer = (state = initialState, action) => {
         case types.GET_CATEGORIES_FAIL:
             return {
                 ...state,
-                list: [],
+                list: {},
                 error: action.payload,
                 isLoading: false
             }

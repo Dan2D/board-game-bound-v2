@@ -47,7 +47,6 @@ function Home(props) {
       dealGames: PropTypes.arrayOf(PropTypes.object),
     }
 
-    console.log("HOME")
     return (
         <div>
             <Hero />

@@ -44,10 +44,10 @@ function Hero(props) {
 
     let slideTitleArr = [];
     let slideArr = GAMES.map((slide,index) => {
-        slideTitleArr.push(<p key={slide.name} className={`carousel__slide-title ${index < 1 ? "selected" : ""}`}>{slide.name}</p>);
+        slideTitleArr.push(<p key={slide.name + 'title'} className={`carousel__slide-title ${index < 1 ? "selected" : ""}`}>{slide.name}</p>);
         return (
-            <LazyComponent offset={100} once overflow={true}>
-                <Link key={slide.name} className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
+            <LazyComponent key={slide.name} offset={100} once overflow={true}>
+                <Link className="carousel__lnk" to={`/games?name=${slide.name}&year=${slide.year_pub}`}  onClick={(e) => handleSlideClick(e)}>
                     <img className="carousel__image" src={slide.image} alt={slide.name} />
                 </Link>
             </LazyComponent>
